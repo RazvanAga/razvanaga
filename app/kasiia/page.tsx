@@ -126,23 +126,41 @@ export default function WeddingPage() {
           priority
         />
 
-        <div
-          className="absolute bottom-0 left-0 right-0 h-1/3 backdrop-blur-sm"
-          style={{
-            background: 'linear-gradient(to top, rgba(95, 111, 82, 0.7) 0%, rgba(95, 111, 82, 0.5) 20%, rgba(95, 111, 82, 0.3) 40%, rgba(95, 111, 82, 0.15) 60%, rgba(95, 111, 82, 0.05) 80%, transparent 100%)'
-          }}
-        >
-          <div className="absolute bottom-8 left-0 right-0 text-center" style={{ color: '#FEFAE0' }}>
-            <h1 className="text-4xl font-bold tracking-wide sm:text-5xl">
-              Kasiia & Razvan
-            </h1>
-            <p className="mt-2 text-xl font-medium sm:text-2xl">
-              29 MARTIE 2026
-            </p>
-            <p className="mt-1 text-lg sm:text-xl">
-              Lakeside Flonta
-            </p>
-          </div>
+        {/* Gradient overlay with gradual blur effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none">
+          {/* Multiple blur layers for gradual effect */}
+          <div
+            className="absolute inset-0 backdrop-blur-md"
+            style={{
+              maskImage: 'linear-gradient(to top, black 0%, transparent 50%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 50%)'
+            }}
+          />
+          <div
+            className="absolute inset-0 backdrop-blur-sm"
+            style={{
+              maskImage: 'linear-gradient(to top, black 0%, transparent 70%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 70%)'
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to top, rgba(95, 111, 82, 0.8) 0%, rgba(95, 111, 82, 0.5) 30%, rgba(95, 111, 82, 0.2) 60%, transparent 100%)'
+            }}
+          />
+        </div>
+
+        <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none" style={{ color: '#FEFAE0' }}>
+          <h1 className="text-4xl font-bold tracking-wide sm:text-5xl">
+            Kasiia & Razvan
+          </h1>
+          <p className="mt-2 text-xl font-medium sm:text-2xl">
+            29 MARTIE 2026
+          </p>
+          <p className="mt-1 text-lg sm:text-xl">
+            Lakeside Flonta
+          </p>
         </div>
       </div>
 
