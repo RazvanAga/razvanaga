@@ -54,3 +54,13 @@ body::-webkit-scrollbar {
 *::-webkit-scrollbar {
   display: none;
 }
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

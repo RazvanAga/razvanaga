@@ -126,7 +126,13 @@ export default function WeddingPage() {
           priority
         />
 
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t to-transparent backdrop-blur-sm" style={{ background: 'linear-gradient(to top, rgba(95, 111, 82, 0.7), transparent)' }}>
+        <div
+          className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t to-transparent backdrop-blur-sm animate-fade-in"
+          style={{
+            background: 'linear-gradient(to top, rgba(95, 111, 82, 0.7), transparent)',
+            animation: 'fadeIn 0.8s ease-in-out'
+          }}
+        >
           <div className="absolute bottom-8 left-0 right-0 text-center" style={{ color: '#FEFAE0' }}>
             <h1 className="text-4xl font-bold tracking-wide sm:text-5xl">
               Kasiia & Razvan
