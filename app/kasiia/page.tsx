@@ -358,7 +358,7 @@ export default function WeddingPage() {
             {submitStatus === "success" && (
               <div className="w-full max-w-md rounded-xl border-2 p-4 text-center" style={{ borderColor: '#A9B388', backgroundColor: '#FEFAE0' }}>
                 <p className="font-semibold" style={{ color: '#5F6F52' }}>
-                  ✓ RSVP-ul a fost trimis cu succes!
+                  ✓ Confirmarea a fost trimisă cu succes!
                 </p>
                 <p className="mt-1 text-sm" style={{ color: '#5F6F52' }}>
                   Mulțumim pentru confirmarea prezenței!
