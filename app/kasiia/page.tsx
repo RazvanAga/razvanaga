@@ -158,14 +158,14 @@ export default function WeddingPage() {
           <p className="mt-2 text-xl font-medium sm:text-2xl">
             29 MARTIE 2026
           </p>
-          <p className="mt-1 text-lg sm:text-xl">
+          <p className="mt-1 text-xl font-medium sm:text-2xl">
             <a
               href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.6841759,21.2345571,17.25z/data=!4m6!3m5!1s0x47455ea63ec2c3d1:0x64833cc2c242e0e4!8m2!3d45.684881!4d21.2377256!16s%2Fg%2F11gb3yskz2?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:opacity-80 transition-opacity"
             >
-              Lakeside Flonta
+              Lakeside Flonta, Giroc
             </a>
           </p>
         </div>
