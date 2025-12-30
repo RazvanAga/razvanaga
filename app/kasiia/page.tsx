@@ -160,7 +160,7 @@ export default function WeddingPage() {
           </p>
           <p className="mt-1 text-lg sm:text-xl">
             <a
-              href="https://maps.google.com/?q=45.684881,21.232962"
+              href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.684881,21.237726,17z"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:opacity-80 transition-opacity"
