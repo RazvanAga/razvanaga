@@ -165,7 +165,7 @@ export default function WeddingPage() {
               rel="noopener noreferrer"
               className="underline hover:opacity-80 transition-opacity"
             >
-              Lakeside Flonta, Giroc
+              Lakeside Flonta
             </a>
           </p>
         </div>
