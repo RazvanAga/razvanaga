@@ -195,7 +195,8 @@ export default function WeddingPage() {
                   return (
                     <div
                       key={num}
-                      className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-3xl font-bold transition-all ${
+                      onClick={() => setGuestCount(num)}
+                      className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-3xl font-bold transition-all cursor-pointer ${
                         isActive
                           ? "border-3 scale-110 shadow-lg"
                           : distance === 1
