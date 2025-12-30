@@ -119,7 +119,7 @@ export default function WeddingPage() {
     <div className="min-h-screen bg-white font-sans overflow-x-hidden w-full">
       <div className="relative h-[70vh] w-full overflow-hidden max-w-full">
         <Image
-          src="/Images/Thumbnail.JPEG"
+          src="/Images/Thumbnail.jpeg"
           alt="Kasiia & Razvan"
           fill
           className="object-cover"
