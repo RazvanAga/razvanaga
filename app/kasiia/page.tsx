@@ -250,7 +250,6 @@ export default function WeddingPage() {
                       }}
                       onFocus={(e) => e.target.style.borderColor = '#5F6F52'}
                       onBlur={(e) => e.target.style.borderColor = '#A9B388'}
-                      placeholder="Popescu"
                     />
                   </div>
 
@@ -272,7 +271,6 @@ export default function WeddingPage() {
                       }}
                       onFocus={(e) => e.target.style.borderColor = '#5F6F52'}
                       onBlur={(e) => e.target.style.borderColor = '#A9B388'}
-                      placeholder="Ion"
                     />
                   </div>
                 </div>
