@@ -166,11 +166,11 @@ export default function WeddingPage() {
 
       <div className="flex flex-col items-center px-6 py-12 select-none w-full max-w-full overflow-x-hidden">
         <h2 className="text-3xl font-bold" style={{ color: '#5F6F52' }}>
-          Confirma Prezenta Ta!
+          Confirmă Prezența Ta!
         </h2>
 
         <p className="mt-8 text-lg" style={{ color: '#5F6F52' }}>
-          Selecteaza numarul de persoane
+          Selectează numărul de persoane
         </p>
 
         <div className="mt-4 flex items-center justify-center w-full max-w-full">
