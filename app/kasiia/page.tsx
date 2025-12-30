@@ -116,7 +116,7 @@ export default function WeddingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans overflow-x-hidden w-full">
+    <div className="min-h-screen font-sans overflow-x-hidden w-full" style={{ backgroundColor: '#FEFAE0' }}>
       <div className="relative h-[70vh] w-full overflow-hidden max-w-full">
         <Image
           src="/Images/Thumbnail.jpeg"
@@ -126,8 +126,8 @@ export default function WeddingPage() {
           priority
         />
 
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent backdrop-blur-sm">
-          <div className="absolute bottom-8 left-0 right-0 text-center text-white">
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t to-transparent backdrop-blur-sm" style={{ background: 'linear-gradient(to top, rgba(95, 111, 82, 0.7), transparent)' }}>
+          <div className="absolute bottom-8 left-0 right-0 text-center" style={{ color: '#FEFAE0' }}>
             <h1 className="text-4xl font-bold tracking-wide sm:text-5xl">
               Kasiia & Razvan
             </h1>
@@ -142,11 +142,11 @@ export default function WeddingPage() {
       </div>
 
       <div className="flex flex-col items-center px-6 py-12 select-none w-full max-w-full overflow-x-hidden">
-        <h2 className="text-3xl font-bold text-black">
+        <h2 className="text-3xl font-bold" style={{ color: '#5F6F52' }}>
           Confirma Prezenta Ta!
         </h2>
 
-        <p className="mt-8 text-lg text-zinc-700">
+        <p className="mt-8 text-lg" style={{ color: '#5F6F52' }}>
           Selecteaza numarul de persoane
         </p>
 
@@ -174,11 +174,16 @@ export default function WeddingPage() {
                       key={num}
                       className={`flex h-24 w-20 shrink-0 items-center justify-center rounded-2xl text-5xl font-bold transition-all ${
                         isActive
-                          ? "border-4 border-black bg-white text-black scale-110 shadow-xl"
+                          ? "border-4 scale-110 shadow-xl"
                           : distance === 1
-                          ? "bg-white text-zinc-400 scale-90 opacity-60"
-                          : "bg-white text-zinc-300 scale-75 opacity-40"
+                          ? "scale-90 opacity-60"
+                          : "scale-75 opacity-40"
                       }`}
+                      style={{
+                        borderColor: isActive ? '#5F6F52' : 'transparent',
+                        backgroundColor: '#FEFAE0',
+                        color: isActive ? '#5F6F52' : distance === 1 ? '#A9B388' : '#B99470'
+                      }}
                     >
                       {num}
                     </div>
@@ -193,16 +198,17 @@ export default function WeddingPage() {
           {guests.map((guest, index) => (
             <div
               key={index}
-              className="rounded-2xl border-2 border-zinc-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border-2 p-6 shadow-sm"
+              style={{ borderColor: '#A9B388', backgroundColor: '#FEFAE0' }}
             >
-              <h3 className="mb-4 text-lg font-semibold text-zinc-800">
+              <h3 className="mb-4 text-lg font-semibold" style={{ color: '#5F6F52' }}>
                 Invitat {index + 1}
               </h3>
 
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-zinc-700">
+                    <label className="mb-2 block text-sm font-medium" style={{ color: '#5F6F52' }}>
                       Nume
                     </label>
                     <input
@@ -211,13 +217,20 @@ export default function WeddingPage() {
                       onChange={(e) =>
                         updateGuest(index, "lastName", e.target.value)
                       }
-                      className="w-full rounded-lg border-2 border-zinc-300 px-4 py-3 text-zinc-900 transition-colors focus:border-black focus:outline-none"
+                      className="w-full rounded-lg border-2 px-4 py-3 transition-colors focus:outline-none"
+                      style={{
+                        borderColor: '#A9B388',
+                        backgroundColor: '#FEFAE0',
+                        color: '#5F6F52'
+                      }}
+                      onFocus={(e) => e.target.style.borderColor = '#5F6F52'}
+                      onBlur={(e) => e.target.style.borderColor = '#A9B388'}
                       placeholder="Popescu"
                     />
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-zinc-700">
+                    <label className="mb-2 block text-sm font-medium" style={{ color: '#5F6F52' }}>
                       Prenume
                     </label>
                     <input
@@ -226,36 +239,45 @@ export default function WeddingPage() {
                       onChange={(e) =>
                         updateGuest(index, "firstName", e.target.value)
                       }
-                      className="w-full rounded-lg border-2 border-zinc-300 px-4 py-3 text-zinc-900 transition-colors focus:border-black focus:outline-none"
+                      className="w-full rounded-lg border-2 px-4 py-3 transition-colors focus:outline-none"
+                      style={{
+                        borderColor: '#A9B388',
+                        backgroundColor: '#FEFAE0',
+                        color: '#5F6F52'
+                      }}
+                      onFocus={(e) => e.target.style.borderColor = '#5F6F52'}
+                      onBlur={(e) => e.target.style.borderColor = '#A9B388'}
                       placeholder="Ion"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-zinc-700">
+                  <label className="mb-2 block text-sm font-medium" style={{ color: '#5F6F52' }}>
                     Categorie
                   </label>
                   <div className="flex gap-3">
                     <button
                       type="button"
                       onClick={() => updateGuest(index, "ageCategory", "adult")}
-                      className={`flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all ${
-                        guest.ageCategory === "adult"
-                          ? "border-black bg-black text-white shadow-lg"
-                          : "border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400"
-                      }`}
+                      className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
+                      style={{
+                        borderColor: guest.ageCategory === "adult" ? '#5F6F52' : '#A9B388',
+                        backgroundColor: guest.ageCategory === "adult" ? '#5F6F52' : '#FEFAE0',
+                        color: guest.ageCategory === "adult" ? '#FEFAE0' : '#5F6F52'
+                      }}
                     >
                       Adult
                     </button>
                     <button
                       type="button"
                       onClick={() => updateGuest(index, "ageCategory", "copil")}
-                      className={`flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all ${
-                        guest.ageCategory === "copil"
-                          ? "border-black bg-black text-white shadow-lg"
-                          : "border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400"
-                      }`}
+                      className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
+                      style={{
+                        borderColor: guest.ageCategory === "copil" ? '#5F6F52' : '#A9B388',
+                        backgroundColor: guest.ageCategory === "copil" ? '#5F6F52' : '#FEFAE0',
+                        color: guest.ageCategory === "copil" ? '#FEFAE0' : '#5F6F52'
+                      }}
                     >
                       Copil
                     </button>
@@ -263,29 +285,31 @@ export default function WeddingPage() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-zinc-700">
+                  <label className="mb-2 block text-sm font-medium" style={{ color: '#5F6F52' }}>
                     Meniu
                   </label>
                   <div className="flex gap-3">
                     <button
                       type="button"
                       onClick={() => updateGuest(index, "menu", "carne")}
-                      className={`flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all ${
-                        guest.menu === "carne"
-                          ? "border-black bg-black text-white shadow-lg"
-                          : "border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400"
-                      }`}
+                      className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
+                      style={{
+                        borderColor: guest.menu === "carne" ? '#5F6F52' : '#A9B388',
+                        backgroundColor: guest.menu === "carne" ? '#5F6F52' : '#FEFAE0',
+                        color: guest.menu === "carne" ? '#FEFAE0' : '#5F6F52'
+                      }}
                     >
                       Carne
                     </button>
                     <button
                       type="button"
                       onClick={() => updateGuest(index, "menu", "vegetarian")}
-                      className={`flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all ${
-                        guest.menu === "vegetarian"
-                          ? "border-black bg-black text-white shadow-lg"
-                          : "border-zinc-300 bg-white text-zinc-700 hover:border-zinc-400"
-                      }`}
+                      className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
+                      style={{
+                        borderColor: guest.menu === "vegetarian" ? '#5F6F52' : '#A9B388',
+                        backgroundColor: guest.menu === "vegetarian" ? '#5F6F52' : '#FEFAE0',
+                        color: guest.menu === "vegetarian" ? '#FEFAE0' : '#5F6F52'
+                      }}
                     >
                       Vegetarian
                     </button>
@@ -299,28 +323,32 @@ export default function WeddingPage() {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="w-full max-w-md rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 px-8 py-4 text-xl font-bold text-white shadow-xl transition-all hover:scale-105 hover:shadow-pink-500/50 disabled:opacity-50 disabled:hover:scale-100"
+              className="w-full max-w-md rounded-2xl px-8 py-4 text-xl font-bold shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+              style={{
+                background: 'linear-gradient(to right, #5F6F52, #A9B388)',
+                color: '#FEFAE0'
+              }}
             >
               {isSubmitting ? "Se trimite..." : "Trimite RSVP"}
             </button>
 
             {submitStatus === "success" && (
-              <div className="w-full max-w-md rounded-xl border-2 border-green-500 bg-green-50 p-4 text-center">
-                <p className="font-semibold text-green-800">
+              <div className="w-full max-w-md rounded-xl border-2 p-4 text-center" style={{ borderColor: '#A9B388', backgroundColor: '#FEFAE0' }}>
+                <p className="font-semibold" style={{ color: '#5F6F52' }}>
                   ✓ RSVP-ul a fost trimis cu succes!
                 </p>
-                <p className="mt-1 text-sm text-green-700">
+                <p className="mt-1 text-sm" style={{ color: '#5F6F52' }}>
                   Mulțumim pentru confirmarea prezenței!
                 </p>
               </div>
             )}
 
             {submitStatus === "error" && (
-              <div className="w-full max-w-md rounded-xl border-2 border-red-500 bg-red-50 p-4 text-center">
-                <p className="font-semibold text-red-800">
+              <div className="w-full max-w-md rounded-xl border-2 p-4 text-center" style={{ borderColor: '#B99470', backgroundColor: '#FEFAE0' }}>
+                <p className="font-semibold" style={{ color: '#B99470' }}>
                   ✗ A apărut o eroare!
                 </p>
-                <p className="mt-1 text-sm text-red-700">
+                <p className="mt-1 text-sm" style={{ color: '#B99470' }}>
                   Te rugăm să încerci din nou.
                 </p>
               </div>
