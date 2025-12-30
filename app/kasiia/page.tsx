@@ -120,7 +120,7 @@ export default function WeddingPage() {
       <div className="relative h-[70vh] w-full overflow-hidden max-w-full">
         <Image
           src="/Images/Thumbnail.jpeg"
-          alt="Razvan & Kasiia"
+          alt="Răzvan & Kasiia"
           fill
           className="object-cover"
           priority
@@ -153,7 +153,7 @@ export default function WeddingPage() {
 
         <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none" style={{ color: '#FEFAE0' }}>
           <h1 className="text-4xl font-bold tracking-wide sm:text-5xl">
-            Razvan & Kasiia
+            Răzvan & Kasiia
           </h1>
           <p className="mt-2 text-xl font-medium sm:text-2xl">
             29 MARTIE 2026

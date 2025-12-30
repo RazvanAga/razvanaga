@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nunta Razvan & Kasiia",
+  title: "Nunta Răzvan & Kasiia",
   description: "29 Martie 2026",
   openGraph: {
-    title: "Nunta Razvan & Kasiia",
+    title: "Nunta Răzvan & Kasiia",
     description: "29 Martie 2026",
     images: [
       {
         url: "/Images/preview.jpeg",
         width: 1200,
         height: 1200,
-        alt: "Razvan & Kasiia",
+        alt: "Răzvan & Kasiia",
       },
     ],
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nunta Razvan & Kasiia",
+    title: "Nunta Răzvan & Kasiia",
     description: "29 Martie 2026",
     images: ["/Images/preview.jpeg"],
   },
