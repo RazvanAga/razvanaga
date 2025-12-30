@@ -226,7 +226,7 @@ export default function WeddingPage() {
               className="rounded-2xl border-2 p-6 shadow-sm"
               style={{ borderColor: '#A9B388', backgroundColor: '#FEFAE0' }}
             >
-              <h3 className="mb-4 text-lg font-semibold" style={{ color: '#5F6F52' }}>
+              <h3 className="mb-4 text-lg font-semibold text-center" style={{ color: '#5F6F52' }}>
                 Invitat {index + 1}
               </h3>
 
