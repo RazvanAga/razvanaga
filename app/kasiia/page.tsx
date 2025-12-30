@@ -151,7 +151,7 @@ export default function WeddingPage() {
           />
         </div>
 
-        <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none" style={{ color: '#FEFAE0' }}>
+        <div className="absolute bottom-8 left-0 right-0 text-center" style={{ color: '#FEFAE0' }}>
           <h1 className="text-4xl font-bold tracking-wide sm:text-5xl">
             Răzvan & Kasiia
           </h1>
