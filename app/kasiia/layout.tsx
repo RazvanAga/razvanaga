@@ -8,9 +8,9 @@ export const metadata: Metadata = {
     description: "29 Martie 2026",
     images: [
       {
-        url: "/Images/preview.jpeg",
+        url: "/Images/Thumbnail.jpeg",
         width: 1200,
-        height: 1200,
+        height: 1600,
         alt: "Kasiia & Razvan",
       },
     ],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nunta Kasiia & Razvan",
     description: "29 Martie 2026",
-    images: ["/Images/preview.jpeg"],
+    images: ["/Images/Thumbnail.jpeg"],
   },
 };
 
