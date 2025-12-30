@@ -207,7 +207,7 @@ export default function WeddingPage() {
                         borderColor: isActive ? '#B99470' : 'transparent',
                         borderWidth: isActive ? '3px' : '0',
                         backgroundColor: '#FEFAE0',
-                        color: isActive ? '#B99470' : distance === 1 ? '#A9B388' : '#B99470'
+                        color: isActive ? '#B99470' : '#A9B388'
                       }}
                     >
                       {num}
