@@ -325,11 +325,11 @@ export default function WeddingPage() {
               disabled={isSubmitting}
               className="w-full max-w-md rounded-2xl px-8 py-4 text-xl font-bold shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
               style={{
-                background: 'linear-gradient(to right, #5F6F52, #A9B388)',
+                backgroundColor: '#B99470',
                 color: '#FEFAE0'
               }}
             >
-              {isSubmitting ? "Se trimite..." : "Trimite RSVP"}
+              {isSubmitting ? "Se trimite..." : "Trimite Confirmarea"}
             </button>
 
             {submitStatus === "success" && (
