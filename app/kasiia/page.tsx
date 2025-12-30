@@ -15,6 +15,7 @@ export default function WeddingPage() {
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [isSwiping, setIsSwiping] = useState(false);
   const touchStartX = useRef(0);
+  const topRef = useRef<HTMLDivElement>(null);
   const [guests, setGuests] = useState<Guest[]>(
     Array.from({ length: 2 }, () => ({
       firstName: "",
@@ -24,7 +25,7 @@ export default function WeddingPage() {
     }))
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   useEffect(() => {
     setGuests((prev) => {
@@ -88,8 +89,9 @@ export default function WeddingPage() {
       return;
     }
 
+    topRef.current?.scrollIntoView({ block: "start" });
     setIsSubmitting(true);
-    setSubmitStatus("idle");
+    setSubmitStatus("submitting");
 
     try {
       const response = await fetch(
@@ -116,7 +118,44 @@ export default function WeddingPage() {
   };
 
   return (
-    <div className="min-h-screen font-sans overflow-x-hidden w-full" style={{ backgroundColor: '#FEFAE0' }}>
+    <div ref={topRef} className="min-h-screen font-sans overflow-x-hidden w-full" style={{ backgroundColor: '#FEFAE0' }}>
+      {/* Toast Notification */}
+      {submitStatus !== "idle" && (
+        <div
+          className="fixed top-[45vh] left-1/2 -translate-x-1/2 z-50 rounded-xl border-2 px-8 py-4 shadow-2xl transition-all animate-fadeIn w-[90%] max-w-2xl"
+          style={{
+            borderColor: submitStatus === "success" ? '#A9B388' : submitStatus === "error" ? '#B99470' : '#5F6F52',
+            backgroundColor: '#FEFAE0'
+          }}
+        >
+          {submitStatus === "submitting" && (
+            <p className="font-semibold text-center" style={{ color: '#5F6F52' }}>
+              Se trimite confirmarea...
+            </p>
+          )}
+          {submitStatus === "success" && (
+            <>
+              <p className="font-semibold text-center" style={{ color: '#5F6F52' }}>
+                ✓ Confirmarea a fost trimisă cu succes!
+              </p>
+              <p className="mt-1 text-sm text-center" style={{ color: '#5F6F52' }}>
+                Mulțumim pentru confirmarea prezenței!
+              </p>
+            </>
+          )}
+          {submitStatus === "error" && (
+            <>
+              <p className="font-semibold text-center" style={{ color: '#B99470' }}>
+                ✗ A apărut o eroare!
+              </p>
+              <p className="mt-1 text-sm text-center" style={{ color: '#B99470' }}>
+                Te rugăm să încerci din nou.
+              </p>
+            </>
+          )}
+        </div>
+      )}
+
       <div className="relative h-[70vh] w-full overflow-hidden max-w-full">
         <Image
           src="/Images/Thumbnail.jpeg"
@@ -128,7 +167,6 @@ export default function WeddingPage() {
 
         {/* Gradient overlay with gradual blur effect */}
         <div className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none">
-          {/* Multiple blur layers for gradual effect */}
           <div
             className="absolute inset-0 backdrop-blur-md"
             style={{
@@ -156,11 +194,19 @@ export default function WeddingPage() {
             Răzvan & Kasiia
           </h1>
           <p className="mt-2 text-xl font-medium sm:text-2xl flex items-center justify-center gap-2">
-            <span>📅</span>
-            <span>29 MARTIE 2026</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>29 Martie 2026</span>
           </p>
           <p className="mt-1 text-xl font-medium sm:text-2xl flex items-center justify-center gap-2">
-            <span>📍</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
             <a
               href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.6841759,21.2345571,17.25z/data=!4m6!3m5!1s0x47455ea63ec2c3d1:0x64833cc2c242e0e4!8m2!3d45.684881!4d21.2377256!16s%2Fg%2F11gb3yskz2?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
@@ -351,7 +397,7 @@ export default function WeddingPage() {
             </div>
           ))}
 
-          <div className="mt-8 flex flex-col items-center gap-4">
+          <div className="mt-8 flex flex-col items-center">
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
@@ -363,28 +409,6 @@ export default function WeddingPage() {
             >
               {isSubmitting ? "Se trimite..." : "Trimite Confirmarea"}
             </button>
-
-            {submitStatus === "success" && (
-              <div className="w-full max-w-md rounded-xl border-2 p-4 text-center" style={{ borderColor: '#A9B388', backgroundColor: '#FEFAE0' }}>
-                <p className="font-semibold" style={{ color: '#5F6F52' }}>
-                  ✓ Confirmarea a fost trimisă cu succes!
-                </p>
-                <p className="mt-1 text-sm" style={{ color: '#5F6F52' }}>
-                  Mulțumim pentru confirmarea prezenței!
-                </p>
-              </div>
-            )}
-
-            {submitStatus === "error" && (
-              <div className="w-full max-w-md rounded-xl border-2 p-4 text-center" style={{ borderColor: '#B99470', backgroundColor: '#FEFAE0' }}>
-                <p className="font-semibold" style={{ color: '#B99470' }}>
-                  ✗ A apărut o eroare!
-                </p>
-                <p className="mt-1 text-sm" style={{ color: '#B99470' }}>
-                  Te rugăm să încerci din nou.
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </div>
