@@ -127,10 +127,9 @@ export default function WeddingPage() {
         />
 
         <div
-          className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t to-transparent backdrop-blur-sm animate-fade-in"
+          className="absolute bottom-0 left-0 right-0 h-1/3 backdrop-blur-sm"
           style={{
-            background: 'linear-gradient(to top, rgba(95, 111, 82, 0.7), transparent)',
-            animation: 'fadeIn 0.8s ease-in-out'
+            background: 'linear-gradient(to top, rgba(95, 111, 82, 0.7) 0%, rgba(95, 111, 82, 0.5) 20%, rgba(95, 111, 82, 0.3) 40%, rgba(95, 111, 82, 0.15) 60%, rgba(95, 111, 82, 0.05) 80%, transparent 100%)'
           }}
         >
           <div className="absolute bottom-8 left-0 right-0 text-center" style={{ color: '#FEFAE0' }}>
