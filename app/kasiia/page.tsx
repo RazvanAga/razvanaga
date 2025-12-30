@@ -286,8 +286,8 @@ export default function WeddingPage() {
                       onClick={() => updateGuest(index, "ageCategory", "adult")}
                       className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
                       style={{
-                        borderColor: guest.ageCategory === "adult" ? '#5F6F52' : '#A9B388',
-                        backgroundColor: guest.ageCategory === "adult" ? '#5F6F52' : '#FEFAE0',
+                        borderColor: guest.ageCategory === "adult" ? '#B99470' : '#A9B388',
+                        backgroundColor: guest.ageCategory === "adult" ? '#B99470' : '#FEFAE0',
                         color: guest.ageCategory === "adult" ? '#FEFAE0' : '#5F6F52'
                       }}
                     >
@@ -298,8 +298,8 @@ export default function WeddingPage() {
                       onClick={() => updateGuest(index, "ageCategory", "copil")}
                       className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
                       style={{
-                        borderColor: guest.ageCategory === "copil" ? '#5F6F52' : '#A9B388',
-                        backgroundColor: guest.ageCategory === "copil" ? '#5F6F52' : '#FEFAE0',
+                        borderColor: guest.ageCategory === "copil" ? '#B99470' : '#A9B388',
+                        backgroundColor: guest.ageCategory === "copil" ? '#B99470' : '#FEFAE0',
                         color: guest.ageCategory === "copil" ? '#FEFAE0' : '#5F6F52'
                       }}
                     >
@@ -318,8 +318,8 @@ export default function WeddingPage() {
                       onClick={() => updateGuest(index, "menu", "carne")}
                       className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
                       style={{
-                        borderColor: guest.menu === "carne" ? '#5F6F52' : '#A9B388',
-                        backgroundColor: guest.menu === "carne" ? '#5F6F52' : '#FEFAE0',
+                        borderColor: guest.menu === "carne" ? '#B99470' : '#A9B388',
+                        backgroundColor: guest.menu === "carne" ? '#B99470' : '#FEFAE0',
                         color: guest.menu === "carne" ? '#FEFAE0' : '#5F6F52'
                       }}
                     >
@@ -330,8 +330,8 @@ export default function WeddingPage() {
                       onClick={() => updateGuest(index, "menu", "vegetarian")}
                       className="flex-1 rounded-lg border-2 px-6 py-3 font-medium transition-all shadow-lg"
                       style={{
-                        borderColor: guest.menu === "vegetarian" ? '#5F6F52' : '#A9B388',
-                        backgroundColor: guest.menu === "vegetarian" ? '#5F6F52' : '#FEFAE0',
+                        borderColor: guest.menu === "vegetarian" ? '#B99470' : '#A9B388',
+                        backgroundColor: guest.menu === "vegetarian" ? '#B99470' : '#FEFAE0',
                         color: guest.menu === "vegetarian" ? '#FEFAE0' : '#5F6F52'
                       }}
                     >
