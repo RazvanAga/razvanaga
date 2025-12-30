@@ -159,7 +159,14 @@ export default function WeddingPage() {
             29 MARTIE 2026
           </p>
           <p className="mt-1 text-lg sm:text-xl">
-            Lakeside Flonta
+            <a
+              href="https://maps.google.com/?q=45.684881,21.232962"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:opacity-80 transition-opacity"
+            >
+              Lakeside Flonta
+            </a>
           </p>
         </div>
       </div>
