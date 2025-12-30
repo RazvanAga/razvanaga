@@ -203,7 +203,7 @@ export default function WeddingPage() {
                           : "scale-75 opacity-40"
                       }`}
                       style={{
-                        borderColor: isActive ? '#5F6F52' : 'transparent',
+                        borderColor: isActive ? '#B99470' : 'transparent',
                         borderWidth: isActive ? '3px' : '0',
                         backgroundColor: '#FEFAE0',
                         color: isActive ? '#5F6F52' : distance === 1 ? '#A9B388' : '#B99470'
