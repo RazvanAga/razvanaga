@@ -67,7 +67,7 @@ export default function WeddingPage() {
   };
 
   const handleTouchEnd = () => {
-    const itemWidth = 92;
+    const itemWidth = 76;
     const swipedItems = -Math.round(swipeOffset / itemWidth);
     const newCount = Math.max(1, Math.min(9, guestCount + swipedItems));
 
@@ -150,7 +150,7 @@ export default function WeddingPage() {
           Selecteaza numarul de persoane
         </p>
 
-        <div className="mt-10 flex items-center justify-center w-full max-w-full">
+        <div className="mt-4 flex items-center justify-center w-full max-w-full">
           <div
             className="relative cursor-grab active:cursor-grabbing overflow-hidden w-full max-w-md px-8"
             onTouchStart={handleTouchStart}
@@ -161,7 +161,7 @@ export default function WeddingPage() {
               <div
                 className="flex gap-3"
                 style={{
-                  transform: `translateX(calc(50% - ${(guestCount - 1) * 92}px - 46px + ${swipeOffset}px))`,
+                  transform: `translateX(calc(50% - ${(guestCount - 1) * 76}px - 38px + ${swipeOffset}px))`,
                   transition: isSwiping ? "none" : "transform 0.3s ease-out",
                 }}
               >
@@ -172,15 +172,16 @@ export default function WeddingPage() {
                   return (
                     <div
                       key={num}
-                      className={`flex h-24 w-20 shrink-0 items-center justify-center rounded-2xl text-5xl font-bold transition-all ${
+                      className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-3xl font-bold transition-all ${
                         isActive
-                          ? "border-4 scale-110 shadow-xl"
+                          ? "border-3 scale-110 shadow-lg"
                           : distance === 1
                           ? "scale-90 opacity-60"
                           : "scale-75 opacity-40"
                       }`}
                       style={{
                         borderColor: isActive ? '#5F6F52' : 'transparent',
+                        borderWidth: isActive ? '3px' : '0',
                         backgroundColor: '#FEFAE0',
                         color: isActive ? '#5F6F52' : distance === 1 ? '#A9B388' : '#B99470'
                       }}
