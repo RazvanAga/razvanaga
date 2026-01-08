@@ -381,11 +381,11 @@ export default function KasiiaPage() {
 
         {/* Hero Content */}
         <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#FEFAE0] sm:pb-20">
-          <h1 className="font-serif text-6xl font-medium tracking-tight sm:text-8xl">
+          <h1 className="font-serif text-5xl font-medium tracking-tight sm:text-8xl">
             Răzvan <span className="text-[#B99470] italic">&</span> Kasiia
           </h1>
 
-          <div className="mt-8 flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] sm:text-sm">
+          <div className="mt-4 flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] sm:mt-8 sm:text-sm">
             <div className="flex flex-col items-center gap-1">
               <span className="text-3xl font-bold">29</span>
               <span className="opacity-70">Martie</span>
@@ -398,11 +398,11 @@ export default function KasiiaPage() {
           </div>
           
           {/* Countdown Timer */}
-          <div className="mt-8">
+          <div className="mt-4 sm:mt-8">
             <CountdownTimer />
           </div>
 
-          <div className="mt-10 flex flex-col items-center gap-4">
+          <div className="mt-6 flex flex-col items-center gap-4 sm:mt-10">
             <a
               href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom"
               target="_blank"
