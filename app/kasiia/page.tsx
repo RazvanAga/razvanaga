@@ -380,14 +380,10 @@ export default function KasiiaPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#2A3B28]/95 via-[#2A3B28]/30 to-transparent" />
 
         {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center pb-20 text-center text-[#FEFAE0]">
+        <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#FEFAE0] sm:pb-20">
           <h1 className="font-serif text-6xl font-medium tracking-tight sm:text-8xl">
             Răzvan <span className="text-[#B99470] italic">&</span> Kasiia
           </h1>
-          
-          <p className="mt-6 text-xs font-bold uppercase tracking-[0.4em] opacity-80">
-            Save the Date
-          </p>
 
           <div className="mt-8 flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] sm:text-sm">
             <div className="flex flex-col items-center gap-1">
