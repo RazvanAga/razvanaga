@@ -3,6 +3,8 @@
 ## Overview
 This is a Next.js web application designed as a wedding RSVP platform for "Răzvan & Kasiia". It allows guests to confirm their attendance, specify their menu preferences, and indicate if they are bringing children.
 
+**Important Note:** This application is intended 99% for mobile devices. All design decisions and functional implementations must prioritize the mobile user experience.
+
 ## Tech Stack
 -   **Framework:** Next.js 16.0.10 (App Router)
 -   **Library:** React 19.2.1
