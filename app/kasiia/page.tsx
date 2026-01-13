@@ -412,19 +412,12 @@ export default function KasiiaPage() {
             </a>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-          </svg>
-        </div>
       </header>
 
       {/* --- CONTENT SECTION --- */}
-      <div 
+      <div
         ref={startRef}
-        className="relative z-10 -mt-10 rounded-t-[3rem] bg-[#FEFAE0] px-6 pt-10 pb-24 shadow-[0_-20px_50px_-10px_rgba(42,59,40,0.2)] sm:px-12"
+        className="relative z-10 mt-2 bg-[#FEFAE0] px-6 pt-10 pb-24 shadow-[0_-20px_50px_-10px_rgba(42,59,40,0.2)] sm:px-12"
       >
 
         <div className="mx-auto max-w-4xl">
