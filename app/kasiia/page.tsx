@@ -196,7 +196,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
         </div>
 
         {/* Increment Button */}
-        <button 
+        <button
           onClick={increment}
           disabled={count >= maxCount}
           className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#E8E6D1] text-[#5F6F52] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
@@ -205,10 +205,6 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14"/></svg>
         </button>
       </div>
-
-      <p className="mt-6 text-[9px] uppercase tracking-[0.3em] text-[#8BA085] opacity-40">
-        Glisează sau folosește butoanele
-      </p>
     </div>
   );
 };
@@ -425,9 +421,60 @@ export default function KasiiaPage() {
             <h2 className="font-serif text-4xl font-medium text-[#5F6F52] sm:text-5xl">
               Confirmă prezența
             </h2>
+
             <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#8BA085]">
               Suntem onorați să vă avem alături într-o zi atât de specială pentru noi. Vă rugăm să ne confirmați prezența până la data de 1 Martie.
             </p>
+
+            {/* Carousel with 3 cards */}
+            <div className="mt-12 mb-8">
+              <div className="flex gap-6 overflow-x-auto pb-6 px-4 snap-x snap-mandatory scrollbar-hide">
+                {/* Card 1 - Ceremonie */}
+                <div className="flex-shrink-0 w-[280px] snap-center">
+                  <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
+                    <Image
+                      src="/Images/Lakeside/Ceremonie.jpg"
+                      alt="Ceremonie"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="mt-4 text-center">
+                    <p className="text-sm text-[#8BA085]">Ceremonia va începe la ora 15:00 la Lakeside</p>
+                  </div>
+                </div>
+
+                {/* Card 2 - Masa */}
+                <div className="flex-shrink-0 w-[280px] snap-center">
+                  <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
+                    <Image
+                      src="/Images/Lakeside/Masa.webp"
+                      alt="Masa"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="mt-4 text-center">
+                    <p className="text-sm text-[#8BA085]">Masa va începe la ora 16:30 la restaurant</p>
+                  </div>
+                </div>
+
+                {/* Card 3 - Lac */}
+                <div className="flex-shrink-0 w-[280px] snap-center">
+                  <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
+                    <Image
+                      src="/Images/Lakeside/Lac.jpg"
+                      alt="Lac"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="mt-4 text-center">
+                    <p className="text-sm text-[#8BA085]">Un cadru natural fermecător pentru cele mai frumoase amintiri</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* GUEST COUNTER */}
