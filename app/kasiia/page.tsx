@@ -400,7 +400,7 @@ export default function KasiiaPage() {
 
           <div className="mt-6 flex flex-col items-center gap-4 sm:mt-10">
             <a
-              href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom"
+              href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.6876066,21.2375553,15z/data=!4m6!3m5!1s0x47455ea63ec2c3d1:0x64833cc2c242e0e4!8m2!3d45.684881!4d21.2377256!16s%2Fg%2F11gb3yskz2?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               className="flex w-[240px] items-center justify-center gap-2 rounded-full bg-white/10 py-4 text-xs font-black uppercase tracking-[0.2em] backdrop-blur-md transition-all hover:bg-white/20"
             >
