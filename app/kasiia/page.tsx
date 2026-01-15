@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { Church, Utensils, Soup, Salad, UtensilsCrossed, Cake } from "lucide-react";
 
 // --- Types ---
 type Guest = {
@@ -128,9 +129,9 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
 
   return (
     <div className="flex flex-col items-center select-none">
-      <span className="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-[#B99470]">
+      <h2 className="mb-8 font-serif text-2xl font-medium text-[#5F6F52] sm:text-3xl">
         Selectează numărul de persoane
-      </span>
+      </h2>
 
       <div className="flex w-full items-center justify-center gap-2 sm:gap-6">
         {/* Decrement Button */}
@@ -148,8 +149,8 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
           <div className="absolute inset-0 -mx-2 h-full rounded-[2.5rem] bg-white/40 shadow-inner blur-[1px]" />
 
           {/* Side Gradients for Fade Effect */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#FEFAE0] via-[#FEFAE0]/40 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#FEFAE0] via-[#FEFAE0]/40 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#FFFFE3] via-[#FFFFE3]/40 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#FFFFE3] via-[#FFFFE3]/40 to-transparent" />
 
           <div
             className="relative z-10 cursor-grab active:cursor-grabbing overflow-hidden px-4 py-10"
@@ -256,7 +257,7 @@ const CountdownTimer = () => {
         <div key={idx} className="flex flex-col items-center">
           <div className="relative">
              {/* Increased font size slightly from text-3xl/4xl to custom scale for ~5% bump */}
-             <span className="font-serif text-[2rem] font-medium tabular-nums sm:text-[2.75rem] text-[#FEFAE0]">
+             <span className="font-serif text-[2rem] font-medium tabular-nums sm:text-[2.75rem] text-[#FFFFE3]">
               {String(item.value).padStart(2, "0")}
             </span>
             {/* Subtle glow/shadow for better readability over image */}
@@ -269,6 +270,64 @@ const CountdownTimer = () => {
           </span>
         </div>
       ))}
+    </div>
+  );
+};
+
+// 5. Program Timeline with Scroll Progress
+const ProgramTimeline = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(33.33);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    const totalPages = 3;
+    const currentPage = maxScroll > 0 ? Math.round((scrollLeft / maxScroll) * (totalPages - 1)) : 0;
+    const progress = ((currentPage + 1) / totalPages) * 100;
+    setScrollProgress(progress);
+  };
+
+  const activities = [
+    { time: "15:00", label: "Cununia Religioasă", icon: Church },
+    { time: "16:30", label: "Aperitivul", icon: Utensils },
+    { time: "18:00", label: "Supa", icon: Soup },
+    { time: "19:30", label: "Antreul", icon: Salad },
+    { time: "21:00", label: "Felul Principal", icon: UtensilsCrossed },
+    { time: "22:00", label: "Tortul", icon: Cake },
+  ];
+
+  return (
+    <div className="mb-8">
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+      >
+        {activities.map((item, idx) => (
+          <div
+            key={idx}
+            className={`flex-shrink-0 w-[calc(50%-0.5rem)] ${idx % 2 === 0 ? 'snap-start' : ''}`}
+          >
+            <div className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#E8E6D1]/50 transition-all hover:shadow-md h-full">
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#F0F2E8]">
+                <item.icon className="h-7 w-7 text-[#5F6F52]" />
+              </div>
+              <span className="text-lg font-bold text-[#5F6F52]">{item.time}</span>
+              <span className="mt-1 text-center text-sm text-[#8BA085]">{item.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Scroll Progress Bar */}
+      <div className="mt-4 mx-auto w-32 h-1.5 rounded-full bg-[#E8E6D1]">
+        <div
+          className="h-full rounded-full bg-[#5F6F52] transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
     </div>
   );
 };
@@ -360,7 +419,7 @@ export default function KasiiaPage() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-[#FEFAE0] font-sans text-[#2A3B28] selection:bg-[#B99470] selection:text-white">
+    <main className="min-h-screen w-full bg-[#FFFFE3] font-sans text-[#2A3B28] selection:bg-[#B99470] selection:text-white">
 
       {/* --- HERO SECTION --- */}
       <header className="relative h-[90vh] w-full overflow-hidden">
@@ -373,10 +432,10 @@ export default function KasiiaPage() {
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2A3B28]/95 via-[#2A3B28]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#4A4A31]/95 via-[#4A4A31]/30 to-transparent" />
 
         {/* Hero Content */}
-        <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#FEFAE0] sm:pb-20">
+        <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#FFFFE3] sm:pb-20">
           <h1 className="font-serif text-5xl font-medium tracking-tight sm:text-8xl">
             Răzvan <span className="text-[#B99470] italic">&</span> Kasiia
           </h1>
@@ -413,10 +472,21 @@ export default function KasiiaPage() {
       {/* --- CONTENT SECTION --- */}
       <div
         ref={startRef}
-        className="relative z-10 mt-2 bg-[#FEFAE0] px-6 pt-10 pb-24 shadow-[0_-20px_50px_-10px_rgba(42,59,40,0.2)] sm:px-12"
+        className="relative z-10 mt-2 bg-[#FFFFE3] px-6 pt-10 pb-24 shadow-[0_-20px_50px_-10px_rgba(42,59,40,0.2)] sm:px-12"
       >
 
         <div className="mx-auto max-w-4xl">
+          {/* Program Timeline */}
+          <div className="mb-16 text-center">
+            <h2 className="font-serif text-4xl font-medium text-[#5F6F52] sm:text-5xl">Program</h2>
+            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#8BA085]">
+              Întregul eveniment, inclusiv ceremonia religioasă va avea loc la restaurantul Lakeside Flonta. Pentru orice posibile modificări, vă vom contacta personal.
+            </p>
+            <div className="mt-6">
+              <ProgramTimeline />
+            </div>
+          </div>
+
           <div className="mb-12 text-center">
             <h2 className="font-serif text-4xl font-medium text-[#5F6F52] sm:text-5xl">
               Confirmă prezența
@@ -425,56 +495,6 @@ export default function KasiiaPage() {
             <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#8BA085]">
               Suntem onorați să vă avem alături într-o zi atât de specială pentru noi. Vă rugăm să ne confirmați prezența până la data de 1 Martie.
             </p>
-
-            {/* Carousel with 3 cards */}
-            <div className="mt-12 mb-8">
-              <div className="flex gap-6 overflow-x-auto pb-6 px-4 snap-x snap-mandatory scrollbar-hide">
-                {/* Card 1 - Ceremonie */}
-                <div className="flex-shrink-0 w-[280px] snap-center">
-                  <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
-                    <Image
-                      src="/Images/Lakeside/Ceremonie.jpg"
-                      alt="Ceremonie"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <p className="text-sm text-[#8BA085]">Ceremonia va începe la ora 15:00 la Lakeside</p>
-                  </div>
-                </div>
-
-                {/* Card 2 - Masa */}
-                <div className="flex-shrink-0 w-[280px] snap-center">
-                  <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
-                    <Image
-                      src="/Images/Lakeside/Masa.webp"
-                      alt="Masa"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <p className="text-sm text-[#8BA085]">Masa va începe la ora 16:30 la restaurant</p>
-                  </div>
-                </div>
-
-                {/* Card 3 - Lac */}
-                <div className="flex-shrink-0 w-[280px] snap-center">
-                  <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
-                    <Image
-                      src="/Images/Lakeside/Lac.jpg"
-                      alt="Lac"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="mt-4 text-center">
-                    <p className="text-sm text-[#8BA085]">Un cadru natural fermecător pentru cele mai frumoase amintiri</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* GUEST COUNTER */}
@@ -492,7 +512,7 @@ export default function KasiiaPage() {
               >
                 {/* CARD GROUP - Named to avoid conflicts */}
                 <div className="group/card relative h-full overflow-hidden rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_-10px_rgba(95,111,82,0.12)] transition-all hover:shadow-[0_20px_50px_-10px_rgba(95,111,82,0.18)] border border-[#E8E6D1]/50">
-                  <div className="absolute right-0 top-0 -mr-6 -mt-6 h-24 w-24 rounded-full bg-[#FEFAE0] opacity-40 blur-2xl transition-all group-hover/card:scale-150 group-hover/card:bg-[#E8E6D1]" />
+                  <div className="absolute right-0 top-0 -mr-6 -mt-6 h-24 w-24 rounded-full bg-[#FFFFE3] opacity-40 blur-2xl transition-all group-hover/card:scale-150 group-hover/card:bg-[#E8E6D1]" />
 
                   <h3 className="mb-8 flex items-center gap-3 font-serif text-xl font-medium text-[#5F6F52]">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F0F2E8] text-sm font-bold shadow-inner">
@@ -569,7 +589,7 @@ export default function KasiiaPage() {
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="group relative w-full max-md overflow-hidden rounded-full bg-[#5F6F52] px-10 py-6 text-sm font-black uppercase tracking-[0.3em] text-[#FEFAE0] shadow-[0_20px_40px_-10px_rgba(95,111,82,0.4)] transition-all hover:bg-[#4A5A3E] hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(95,111,82,0.5)] disabled:opacity-70 disabled:hover:scale-100"
+                  className="group relative w-full max-md overflow-hidden rounded-full bg-[#5F6F52] px-10 py-6 text-sm font-black uppercase tracking-[0.3em] text-[#FFFFE3] shadow-[0_20px_40px_-10px_rgba(95,111,82,0.4)] transition-all hover:bg-[#4A5A3E] hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(95,111,82,0.5)] disabled:opacity-70 disabled:hover:scale-100"
                 >
                   <div className={`flex items-center justify-center gap-3 transition-transform duration-500 ${isSubmitting ? '-translate-y-20' : 'translate-y-0'}`}>
                     CONFIRMĂ PREZENȚA
@@ -577,7 +597,7 @@ export default function KasiiaPage() {
 
                   {/* Loading Spinner */}
                   <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-500 ${isSubmitting ? 'translate-y-0' : 'translate-y-20'}`}>
-                    <div className="h-7 w-7 animate-spin rounded-full border-3 border-[#FEFAE0] border-t-transparent" />
+                    <div className="h-7 w-7 animate-spin rounded-full border-3 border-[#FFFFE3] border-t-transparent" />
                   </div>
                 </button>
               </div>
