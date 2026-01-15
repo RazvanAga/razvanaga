@@ -129,7 +129,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
 
   return (
     <div className="flex flex-col items-center select-none">
-      <h2 className="mb-8 font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">
+      <h2 className="mb-8 text-center font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">
         Numărul de Persoane
       </h2>
 
@@ -179,7 +179,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
                   <div
                     key={num}
                     onClick={() => onChange(num)}
-                    className="flex h-20 w-20 shrink-0 items-center justify-center font-serif text-4xl transition-all duration-300 cursor-pointer"
+                    className="flex h-20 w-20 shrink-0 items-center justify-center font-serif text-4xl transition-all duration-300 cursor-pointer leading-none pb-3"
                     style={{
                       width: `${itemWidth}px`,
                       opacity,
@@ -423,19 +423,22 @@ export default function KasiiaPage() {
 
       {/* --- HERO SECTION --- */}
       <header className="relative h-[90vh] w-full overflow-hidden">
-        <Image
-          src="/Images/Thumbnail.jpeg"
-          alt="Răzvan & Kasiia"
-          fill
-          className="object-cover brightness-[0.85] filter transition-all duration-1000 ease-in-out hover:scale-105"
-          priority
-        />
+        {/* Layer 1: Image (Base) */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/Images/Thumbnail.jpeg"
+            alt="Răzvan & Kasiia"
+            fill
+            className="object-cover brightness-[0.85] filter transition-all duration-1000 ease-in-out hover:scale-105"
+            priority
+          />
+        </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#664e44]/95 via-[#664e44]/30 to-transparent" />
+        {/* Layer 2: Gradient Overlay (Middle) */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#664e44]/95 via-[#664e44]/30 to-transparent" />
 
-        {/* Hero Content */}
-        <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#ffe8d6] sm:pb-20">
+        {/* Layer 3: Content (Top) */}
+        <div className="relative z-20 flex h-full flex-col items-center justify-end pb-8 text-center text-[#ffe8d6] sm:pb-20">
           <h1 className="font-serif text-5xl font-medium tracking-tight sm:text-8xl">
             Răzvan <span className="text-[#b08b7f] italic">&</span> Kasiia
           </h1>
@@ -479,8 +482,8 @@ export default function KasiiaPage() {
           {/* Program Timeline */}
           <div className="mb-16 text-center">
             <h2 className="font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">Program</h2>
-            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#b08b7f]">
-              Întregul eveniment, inclusiv ceremonia religioasă va avea loc la restaurantul Lakeside Flonta. Pentru orice posibile modificări, vă vom contacta personal.
+            <p className="mx-auto mt-5 max-w-[280px] sm:max-w-lg leading-relaxed text-[#b08b7f] text-balance">
+              Ceremonia și petrecerea vor avea loc la <br className="hidden sm:block" /> Lakeside Flonta.
             </p>
             <div className="mt-6">
               <ProgramTimeline />
@@ -492,8 +495,8 @@ export default function KasiiaPage() {
               Confirmă prezența
             </h2>
 
-            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#b08b7f]">
-              Suntem onorați să vă avem alături într-o zi atât de specială pentru noi. Vă rugăm să ne confirmați prezența până la data de 1 Martie.
+            <p className="mx-auto mt-5 max-w-[280px] sm:max-w-lg leading-relaxed text-[#b08b7f] text-balance">
+              Vă rugăm să ne confirmați prezența <br className="hidden sm:block" /> până la data de 1 Martie.
             </p>
           </div>
 
@@ -612,7 +615,7 @@ export default function KasiiaPage() {
         <footer className="mt-32 border-t border-[#c7c3b0]/20 pt-12 text-center">
           <p className="font-serif text-xl italic text-[#664e44] opacity-80">Răzvan & Kasiia</p>
           <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.3em] text-[#b08b7f] opacity-50">
-            © 2026 Wedding Celebration
+            © 29 Martie 2026
           </p>
         </footer>
       </div>
