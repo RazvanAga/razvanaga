@@ -29,7 +29,7 @@ const InputField = ({
   error?: boolean;
 }) => (
   <div className="group/input relative w-full">
-    <label className={`mb-1 block text-[10px] font-bold uppercase tracking-[0.15em] transition-colors ${error ? "text-red-400" : "text-[#5F6F52] opacity-60 group-focus-within/input:opacity-100"}`}>
+    <label className={`mb-1 block text-[10px] font-bold uppercase tracking-[0.15em] transition-colors ${error ? "text-red-400" : "text-[#664e44] opacity-60 group-focus-within/input:opacity-100"}`}>
       {label}
     </label>
     <div className="relative">
@@ -38,14 +38,14 @@ const InputField = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full rounded-t-lg border-b-2 bg-[#F0F2E8]/30 px-3 py-3 text-lg text-[#2A3B28] placeholder-neutral-400/50 transition-all focus:bg-[#F0F2E8]/60 focus:outline-none focus:ring-0 ${
+        className={`w-full rounded-t-lg border-b-2 bg-[#faf4e5]/30 px-3 py-3 text-lg text-[#664e44] placeholder-neutral-400/50 transition-all focus:bg-[#faf4e5]/60 focus:outline-none focus:ring-0 ${
           error 
             ? "border-red-300 focus:border-red-500" 
-            : "border-[#A9B388]/40 focus:border-[#5F6F52]"
+            : "border-[#c7c3b0]/40 focus:border-[#664e44]"
         }`}
       />
       {/* Animated underline focus effect - scoped strictly to this input */}
-      <div className={`absolute bottom-0 left-0 h-0.5 w-0 bg-[#5F6F52] transition-all duration-300 group-focus-within/input:w-full ${error ? "bg-red-500" : ""}`} />
+      <div className={`absolute bottom-0 left-0 h-0.5 w-0 bg-[#664e44] transition-all duration-300 group-focus-within/input:w-full ${error ? "bg-red-500" : ""}`} />
     </div>
   </div>
 );
@@ -63,10 +63,10 @@ const SelectionGroup = ({
   onSelect: (val: any) => void;
 }) => (
   <div className="mt-4">
-    <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#5F6F52] opacity-60">
+    <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.15em] text-[#664e44] opacity-60">
       {label}
     </span>
-    <div className="flex w-full gap-1.5 rounded-xl bg-[#F0F2E8]/60 p-1.5">
+    <div className="flex w-full gap-1.5 rounded-xl bg-[#faf4e5]/60 p-1.5">
       {options.map((opt) => {
         const isActive = selected === opt.value;
         return (
@@ -76,8 +76,8 @@ const SelectionGroup = ({
             onClick={() => onSelect(opt.value)}
             className={`flex-1 rounded-lg py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
               isActive
-                ? "bg-white text-[#5F6F52] shadow-sm"
-                : "text-[#8BA085] hover:bg-white/40"
+                ? "bg-white text-[#664e44] shadow-sm"
+                : "text-[#b08b7f] hover:bg-white/40"
             }`}
           >
             {opt.label}
@@ -129,7 +129,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
 
   return (
     <div className="flex flex-col items-center select-none">
-      <h2 className="mb-8 font-serif text-2xl font-medium text-[#5F6F52] sm:text-3xl">
+      <h2 className="mb-8 font-serif text-2xl font-medium text-[#664e44] sm:text-3xl">
         Selectează numărul de persoane
       </h2>
 
@@ -138,7 +138,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
         <button 
           onClick={decrement}
           disabled={count <= minCount}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#E8E6D1] text-[#5F6F52] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#c7c3b0] text-[#664e44] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
           aria-label="Scade numărul de persoane"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/></svg>
@@ -149,8 +149,8 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
           <div className="absolute inset-0 -mx-2 h-full rounded-[2.5rem] bg-white/40 shadow-inner blur-[1px]" />
 
           {/* Side Gradients for Fade Effect */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#FFFFE3] via-[#FFFFE3]/40 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#FFFFE3] via-[#FFFFE3]/40 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#ffe8d6] via-[#ffe8d6]/40 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#ffe8d6] via-[#ffe8d6]/40 to-transparent" />
 
           <div
             className="relative z-10 cursor-grab active:cursor-grabbing overflow-hidden px-4 py-10"
@@ -159,7 +159,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
             onTouchEnd={handleTouchEnd}
           >
             {/* Active Circle Indicator */}
-            <div className="absolute left-1/2 top-1/2 -z-10 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_30px_-5px_rgba(95,111,82,0.15)] border border-[#E8E6D1]" />
+            <div className="absolute left-1/2 top-1/2 -z-10 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_30px_-5px_rgba(102, 78, 68,0.15)] border border-[#c7c3b0]" />
 
             <div
               className="flex items-center"
@@ -184,7 +184,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
                       width: `${itemWidth}px`,
                       opacity,
                       transform: `scale(${scale})`,
-                      color: isActive ? '#5F6F52' : '#A9B388',
+                      color: isActive ? '#664e44' : '#c7c3b0',
                       fontWeight: isActive ? '600' : '400'
                     }}
                   >
@@ -200,7 +200,7 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
         <button
           onClick={increment}
           disabled={count >= maxCount}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#E8E6D1] text-[#5F6F52] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#c7c3b0] text-[#664e44] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
           aria-label="Crește numărul de persoane"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14"/></svg>
@@ -257,7 +257,7 @@ const CountdownTimer = () => {
         <div key={idx} className="flex flex-col items-center">
           <div className="relative">
              {/* Increased font size slightly from text-3xl/4xl to custom scale for ~5% bump */}
-             <span className="font-serif text-[2rem] font-medium tabular-nums sm:text-[2.75rem] text-[#FFFFE3]">
+             <span className="font-serif text-[2rem] font-medium tabular-nums sm:text-[2.75rem] text-[#ffe8d6]">
               {String(item.value).padStart(2, "0")}
             </span>
             {/* Subtle glow/shadow for better readability over image */}
@@ -310,21 +310,21 @@ const ProgramTimeline = () => {
             key={idx}
             className={`flex-shrink-0 w-[calc(50%-0.5rem)] ${idx % 2 === 0 ? 'snap-start' : ''}`}
           >
-            <div className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#E8E6D1]/50 transition-all hover:shadow-md h-full">
-              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#F0F2E8]">
-                <item.icon className="h-7 w-7 text-[#5F6F52]" />
+            <div className="flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md h-full">
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#faf4e5]">
+                <item.icon className="h-7 w-7 text-[#664e44]" />
               </div>
-              <span className="text-lg font-bold text-[#5F6F52]">{item.time}</span>
-              <span className="mt-1 text-center text-sm text-[#8BA085]">{item.label}</span>
+              <span className="text-lg font-bold text-[#664e44]">{item.time}</span>
+              <span className="mt-1 text-center text-sm text-[#b08b7f]">{item.label}</span>
             </div>
           </div>
         ))}
       </div>
 
       {/* Scroll Progress Bar */}
-      <div className="mt-4 mx-auto w-32 h-1.5 rounded-full bg-[#E8E6D1]">
+      <div className="mt-4 mx-auto w-32 h-1.5 rounded-full bg-[#c7c3b0]">
         <div
-          className="h-full rounded-full bg-[#5F6F52] transition-all duration-150"
+          className="h-full rounded-full bg-[#664e44] transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -419,7 +419,7 @@ export default function KasiiaPage() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-[#FFFFE3] font-sans text-[#2A3B28] selection:bg-[#B99470] selection:text-white">
+    <main className="min-h-screen w-full bg-[#ffe8d6] font-sans text-[#664e44] selection:bg-[#b08b7f] selection:text-white">
 
       {/* --- HERO SECTION --- */}
       <header className="relative h-[90vh] w-full overflow-hidden">
@@ -432,12 +432,12 @@ export default function KasiiaPage() {
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#4A4A31]/95 via-[#4A4A31]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#664e44]/95 via-[#664e44]/30 to-transparent" />
 
         {/* Hero Content */}
-        <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#FFFFE3] sm:pb-20">
+        <div className="absolute top-[50%] bottom-0 left-0 right-0 flex flex-col items-center justify-end pb-8 text-center text-[#ffe8d6] sm:pb-20">
           <h1 className="font-serif text-5xl font-medium tracking-tight sm:text-8xl">
-            Răzvan <span className="text-[#B99470] italic">&</span> Kasiia
+            Răzvan <span className="text-[#b08b7f] italic">&</span> Kasiia
           </h1>
 
           <div className="mt-4 flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] sm:mt-8 sm:text-sm">
@@ -445,7 +445,7 @@ export default function KasiiaPage() {
               <span className="text-3xl font-bold">29</span>
               <span className="opacity-70">Martie</span>
             </div>
-            <div className="h-14 w-[1px] bg-[#B99470]/40" />
+            <div className="h-14 w-[1px] bg-[#b08b7f]/40" />
             <div className="flex flex-col items-center gap-1">
               <span className="text-3xl font-bold">2026</span>
               <span className="opacity-70">Duminică</span>
@@ -472,14 +472,14 @@ export default function KasiiaPage() {
       {/* --- CONTENT SECTION --- */}
       <div
         ref={startRef}
-        className="relative z-10 mt-2 bg-[#FFFFE3] px-6 pt-10 pb-24 shadow-[0_-20px_50px_-10px_rgba(42,59,40,0.2)] sm:px-12"
+        className="relative z-10 mt-2 bg-[#ffe8d6] px-6 pt-10 pb-24 shadow-[0_-20px_50px_-10px_rgba(102, 78, 68,0.2)] sm:px-12"
       >
 
         <div className="mx-auto max-w-4xl">
           {/* Program Timeline */}
           <div className="mb-16 text-center">
-            <h2 className="font-serif text-4xl font-medium text-[#5F6F52] sm:text-5xl">Program</h2>
-            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#8BA085]">
+            <h2 className="font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">Program</h2>
+            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#b08b7f]">
               Întregul eveniment, inclusiv ceremonia religioasă va avea loc la restaurantul Lakeside Flonta. Pentru orice posibile modificări, vă vom contacta personal.
             </p>
             <div className="mt-6">
@@ -488,11 +488,11 @@ export default function KasiiaPage() {
           </div>
 
           <div className="mb-12 text-center">
-            <h2 className="font-serif text-4xl font-medium text-[#5F6F52] sm:text-5xl">
+            <h2 className="font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">
               Confirmă prezența
             </h2>
 
-            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#8BA085]">
+            <p className="mx-auto mt-5 max-w-lg leading-relaxed text-[#b08b7f]">
               Suntem onorați să vă avem alături într-o zi atât de specială pentru noi. Vă rugăm să ne confirmați prezența până la data de 1 Martie.
             </p>
           </div>
@@ -511,11 +511,11 @@ export default function KasiiaPage() {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 {/* CARD GROUP - Named to avoid conflicts */}
-                <div className="group/card relative h-full overflow-hidden rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_-10px_rgba(95,111,82,0.12)] transition-all hover:shadow-[0_20px_50px_-10px_rgba(95,111,82,0.18)] border border-[#E8E6D1]/50">
-                  <div className="absolute right-0 top-0 -mr-6 -mt-6 h-24 w-24 rounded-full bg-[#FFFFE3] opacity-40 blur-2xl transition-all group-hover/card:scale-150 group-hover/card:bg-[#E8E6D1]" />
+                <div className="group/card relative h-full overflow-hidden rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_-10px_rgba(102, 78, 68,0.12)] transition-all hover:shadow-[0_20px_50px_-10px_rgba(102, 78, 68,0.18)] border border-[#c7c3b0]/50">
+                  <div className="absolute right-0 top-0 -mr-6 -mt-6 h-24 w-24 rounded-full bg-[#ffe8d6] opacity-40 blur-2xl transition-all group-hover/card:scale-150 group-hover/card:bg-[#c7c3b0]" />
 
-                  <h3 className="mb-8 flex items-center gap-3 font-serif text-xl font-medium text-[#5F6F52]">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F0F2E8] text-sm font-bold shadow-inner">
+                  <h3 className="mb-8 flex items-center gap-3 font-serif text-xl font-medium text-[#664e44]">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#faf4e5] text-sm font-bold shadow-inner">
                       {index + 1}
                     </span>
                     Invitat
@@ -566,15 +566,15 @@ export default function KasiiaPage() {
           {/* SUBMIT AREA */}
           <div className="mt-20 text-center">
             {submitStatus === "success" ? (
-              <div className="animate-in zoom-in duration-500 rounded-[2.5rem] bg-white border border-[#E8E6D1] p-12 shadow-xl">
-                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#5F6F52] text-4xl text-white shadow-lg">
+              <div className="animate-in zoom-in duration-500 rounded-[2.5rem] bg-white border border-[#c7c3b0] p-12 shadow-xl">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#664e44] text-4xl text-white shadow-lg">
                   ✓
                 </div>
-                <h3 className="font-serif text-3xl font-bold text-[#5F6F52]">Mulțumim!</h3>
-                <p className="mt-4 text-lg text-[#8BA085]">Confirmarea a fost trimisă cu succes. Vă așteptăm!</p>
+                <h3 className="font-serif text-3xl font-bold text-[#664e44]">Mulțumim!</h3>
+                <p className="mt-4 text-lg text-[#b08b7f]">Confirmarea a fost trimisă cu succes. Vă așteptăm!</p>
                 <button
                   onClick={() => setSubmitStatus("idle")}
-                  className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#B99470] hover:opacity-70 transition-opacity"
+                  className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#b08b7f] hover:opacity-70 transition-opacity"
                 >
                   Trimite încă o confirmare
                 </button>
@@ -589,7 +589,7 @@ export default function KasiiaPage() {
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="group relative w-full max-md overflow-hidden rounded-full bg-[#5F6F52] px-10 py-6 text-sm font-black uppercase tracking-[0.3em] text-[#FFFFE3] shadow-[0_20px_40px_-10px_rgba(95,111,82,0.4)] transition-all hover:bg-[#4A5A3E] hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(95,111,82,0.5)] disabled:opacity-70 disabled:hover:scale-100"
+                  className="group relative w-full max-md overflow-hidden rounded-full bg-[#664e44] px-10 py-6 text-sm font-black uppercase tracking-[0.3em] text-[#ffe8d6] shadow-[0_20px_40px_-10px_rgba(102, 78, 68,0.4)] transition-all hover:bg-[#4d3a33] hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(102, 78, 68,0.5)] disabled:opacity-70 disabled:hover:scale-100"
                 >
                   <div className={`flex items-center justify-center gap-3 transition-transform duration-500 ${isSubmitting ? '-translate-y-20' : 'translate-y-0'}`}>
                     CONFIRMĂ PREZENȚA
@@ -597,7 +597,7 @@ export default function KasiiaPage() {
 
                   {/* Loading Spinner */}
                   <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-500 ${isSubmitting ? 'translate-y-0' : 'translate-y-20'}`}>
-                    <div className="h-7 w-7 animate-spin rounded-full border-3 border-[#FFFFE3] border-t-transparent" />
+                    <div className="h-7 w-7 animate-spin rounded-full border-3 border-[#ffe8d6] border-t-transparent" />
                   </div>
                 </button>
               </div>
@@ -609,9 +609,9 @@ export default function KasiiaPage() {
           </div>
         </div>
 
-        <footer className="mt-32 border-t border-[#A9B388]/20 pt-12 text-center">
-          <p className="font-serif text-xl italic text-[#5F6F52] opacity-80">Răzvan & Kasiia</p>
-          <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.3em] text-[#8BA085] opacity-50">
+        <footer className="mt-32 border-t border-[#c7c3b0]/20 pt-12 text-center">
+          <p className="font-serif text-xl italic text-[#664e44] opacity-80">Răzvan & Kasiia</p>
+          <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.3em] text-[#b08b7f] opacity-50">
             © 2026 Wedding Celebration
           </p>
         </footer>
