@@ -324,6 +324,7 @@ export default function KasiiaPage() {
   
   const formRef = useRef<HTMLDivElement>(null);
   const startRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
 
   // Sync guests array with count
   useEffect(() => {
@@ -382,6 +383,9 @@ export default function KasiiaPage() {
         }
       );
       setSubmitStatus("success");
+      setTimeout(() => {
+        successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     } catch (error) {
       console.error(error);
       setSubmitStatus("error");
@@ -541,7 +545,7 @@ export default function KasiiaPage() {
           {/* SUBMIT AREA */}
           <div className="mt-20 text-center">
             {submitStatus === "success" ? (
-              <div className="animate-in zoom-in duration-500 rounded-[2.5rem] bg-white border border-[#c7c3b0] p-12 shadow-xl">
+              <div ref={successRef} className="animate-in zoom-in duration-500 rounded-[2.5rem] bg-white border border-[#c7c3b0] p-12 shadow-xl">
                 <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#664e44] text-4xl text-white shadow-lg">
                   ✓
                 </div>
