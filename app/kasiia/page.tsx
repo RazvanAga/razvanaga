@@ -129,8 +129,8 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
 
   return (
     <div className="flex flex-col items-center select-none">
-      <h2 className="mb-8 font-serif text-2xl font-medium text-[#664e44] sm:text-3xl">
-        Selectează numărul de persoane
+      <h2 className="mb-8 font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">
+        Numărul de Persoane
       </h2>
 
       <div className="flex w-full items-center justify-center gap-2 sm:gap-6">
