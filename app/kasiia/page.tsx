@@ -119,31 +119,13 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
     setIsSwiping(false);
   };
   
-  const decrement = () => {
-    if (count > minCount) onChange(count - 1);
-  };
-  
-  const increment = () => {
-    if (count < maxCount) onChange(count + 1);
-  };
-
   return (
     <div className="flex flex-col items-center select-none">
       <h2 className="mb-8 text-center font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">
         Numărul de Persoane
       </h2>
 
-      <div className="flex w-full items-center justify-center gap-2 sm:gap-6">
-        {/* Decrement Button */}
-        <button 
-          onClick={decrement}
-          disabled={count <= minCount}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#c7c3b0] text-[#664e44] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
-          aria-label="Scade numărul de persoane"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/></svg>
-        </button>
-
+      <div className="flex w-full items-center justify-center">
         <div className="relative w-full max-w-[280px] sm:max-w-md">
           {/* Soft Background Track */}
           <div className="absolute inset-0 -mx-2 h-full rounded-[2.5rem] bg-white/40 shadow-inner blur-[1px]" />
@@ -195,16 +177,6 @@ const SwipeCounter = ({ count, onChange }: { count: number; onChange: (n: number
             </div>
           </div>
         </div>
-
-        {/* Increment Button */}
-        <button
-          onClick={increment}
-          disabled={count >= maxCount}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-[#c7c3b0] text-[#664e44] transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:hover:scale-100"
-          aria-label="Crește numărul de persoane"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
       </div>
     </div>
   );
@@ -440,7 +412,7 @@ export default function KasiiaPage() {
         {/* Layer 3: Content (Top) */}
         <div className="relative z-20 flex h-full flex-col items-center justify-end pb-8 text-center text-[#ffe8d6] sm:pb-20">
           <h1 className="font-serif text-5xl font-medium tracking-tight sm:text-8xl">
-            Răzvan <span className="text-[#b08b7f] italic">&</span> Kasiia
+            Răzvan <span className="italic">&</span> Kasiia
           </h1>
 
           <div className="mt-4 flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] sm:mt-8 sm:text-sm">
