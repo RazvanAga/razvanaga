@@ -304,88 +304,11 @@ const ProgramTimeline = () => {
   );
 };
 
-// 6. Envelope Animation Component (Full Screen Reveal)
-const EnvelopeIntro = ({ onComplete }: { onComplete: () => void }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [shouldRender, setShouldRender] = useState(true);
 
-  useEffect(() => {
-    // 1. Wait a moment, then open the envelope
-    const openTimer = setTimeout(() => {
-      setIsOpen(true);
-    }, 1200);
-
-    // 2. Wait for animation to finish, then unmount
-    const endTimer = setTimeout(() => {
-      setShouldRender(false);
-      onComplete();
-    }, 3000);
-
-    return () => {
-      clearTimeout(openTimer);
-      clearTimeout(endTimer);
-    };
-  }, [onComplete]);
-
-  if (!shouldRender) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden pointer-events-none">
-      
-      {/* --- TOP HALF --- */}
-      <div 
-        className={`relative z-20 w-full flex-1 transition-transform duration-[1800ms] cubic-bezier(0.4, 0, 0.2, 1) ${isOpen ? '-translate-y-full' : 'translate-y-0'}`}
-        style={{ 
-          backgroundImage: 'url("/Images/envelope.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'top center',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
-        }}
-      >
-        {/* The Flap using clip-path to allow background image */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-[15vh] translate-y-full"
-          style={{ 
-            backgroundImage: 'url("/Images/envelope.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 50%',
-            clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-            filter: 'brightness(0.9) drop-shadow(0 15px 10px rgba(0,0,0,0.3))',
-            zIndex: 30
-          }} 
-        />
-      </div>
-
-      {/* --- WAX SEAL --- */}
-      <div 
-        className={`absolute left-1/2 top-1/2 z-40 h-28 w-28 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${isOpen ? 'opacity-0 scale-150' : 'opacity-100 scale-100'}`}
-      >
-        <Image
-          src="/Images/seal2.png"
-          alt="Wax Seal"
-          fill
-          className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]"
-        />
-      </div>
-
-      {/* --- BOTTOM HALF --- */}
-      <div 
-        className={`relative z-10 w-full flex-1 transition-transform duration-[1800ms] cubic-bezier(0.4, 0, 0.2, 1) ${isOpen ? 'translate-y-full' : 'translate-y-0'}`}
-        style={{ 
-          backgroundImage: 'url("/Images/envelope.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'bottom center'
-        }}
-      />
-      
-    </div>
-  );
-};
 
 // --- Main Page ---
 
 export default function KasiiaPage() {
-  const [showIntro, setShowIntro] = useState(true);
   const [guestCount, setGuestCount] = useState(2);
   const [guests, setGuests] = useState<Guest[]>(
     Array.from({ length: 2 }, () => ({
@@ -475,8 +398,6 @@ export default function KasiiaPage() {
 
   return (
     <main className="min-h-screen w-full bg-[#ffe8d6] font-sans text-[#664e44] selection:bg-[#b08b7f] selection:text-white">
-      {/* Intro Animation Overlay */}
-      {showIntro && <EnvelopeIntro onComplete={() => setShowIntro(false)} />}
 
       {/* --- HERO SECTION --- */}
       <header className="relative h-[90vh] w-full overflow-hidden">
