@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { Church, Utensils, Soup, Salad, UtensilsCrossed, Cake } from "lucide-react";
+import { Church, Utensils, Soup, Salad, UtensilsCrossed, Cake, Phone } from "lucide-react";
 
 // --- Types ---
 type Guest = {
@@ -591,10 +591,16 @@ export default function KasiiaPage() {
         </div>
 
         <footer className="mt-32 border-t border-[#c7c3b0]/20 pt-12 text-center">
-          <p className="font-serif text-xl italic text-[#664e44] opacity-80">Răzvan & Kasiia</p>
-          <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.3em] text-[#b08b7f] opacity-50">
-            © 29 Martie 2026
-          </p>
+          <div className="flex flex-col items-center gap-3">
+            <a href="https://wa.me/40774580663" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#664e44] opacity-80 hover:opacity-100 transition-opacity">
+              <Phone className="h-4 w-4" />
+              <span className="text-sm font-bold">Răzvan - 0774580663</span>
+            </a>
+            <a href="https://wa.me/40724685936" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#664e44] opacity-80 hover:opacity-100 transition-opacity">
+              <Phone className="h-4 w-4" />
+              <span className="text-sm font-bold">Kasiia - 0724685936</span>
+            </a>
+          </div>
         </footer>
       </div>
     </main>
