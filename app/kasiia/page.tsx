@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { Church, Utensils, Soup, Salad, UtensilsCrossed, Cake, Phone } from "lucide-react";
+import { Church, Utensils, Soup, Salad, UtensilsCrossed, Cake, Phone, MapPin } from "lucide-react";
 
 // --- Types ---
 type Guest = {
@@ -263,11 +263,11 @@ const ProgramTimeline = () => {
 
   const activities = [
     { time: "15:00", label: "Cununia Religioasă", icon: Church },
-    { time: "16:30", label: "Aperitivul", icon: Utensils },
-    { time: "18:00", label: "Supa", icon: Soup },
-    { time: "19:30", label: "Antreul", icon: Salad },
-    { time: "21:00", label: "Felul Principal", icon: UtensilsCrossed },
-    { time: "22:00", label: "Tortul", icon: Cake },
+    { time: "17:00", label: "Restaurant", icon: Utensils },
+    { time: "18:30", label: "Supa", icon: Soup },
+    { time: "20:00", label: "Antreul", icon: Salad },
+    { time: "21:30", label: "Felul Principal", icon: UtensilsCrossed },
+    { time: "22:30", label: "Tortul", icon: Cake },
   ];
 
   return (
@@ -438,15 +438,6 @@ export default function KasiiaPage() {
             <CountdownTimer />
           </div>
 
-          <div className="mt-6 flex flex-col items-center gap-4 sm:mt-10">
-            <a
-              href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.6876066,21.2375553,15z/data=!4m6!3m5!1s0x47455ea63ec2c3d1:0x64833cc2c242e0e4!8m2!3d45.684881!4d21.2377256!16s%2Fg%2F11gb3yskz2?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              className="flex w-[240px] items-center justify-center gap-2 rounded-full bg-white/10 py-4 text-xs font-black uppercase tracking-[0.2em] backdrop-blur-md transition-all hover:bg-white/20"
-            >
-              <span>📍 Lakeside Flonta</span>
-            </a>
-          </div>
         </div>
       </header>
 
@@ -457,12 +448,41 @@ export default function KasiiaPage() {
       >
 
         <div className="mx-auto max-w-4xl">
+          {/* Locatii */}
+          <div className="mb-16 text-center">
+            <h2 className="font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">Locații</h2>
+            <div className="mt-6 flex gap-4">
+              <a
+                href="https://www.google.com/maps/place/Biserica+Adventist%C4%83+Maranatha/@45.7466411,21.2154907,17z/data=!3m1!4b1!4m6!3m5!1s0x47455d59d1680c25:0x712f6dbdb60dbab1!8m2!3d45.7466411!4d21.2154907!16s%2Fg%2F11xvz5_8v2?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md"
+              >
+                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#faf4e5]">
+                  <Church className="h-7 w-7 text-[#664e44]" />
+                </div>
+                <span className="text-lg font-bold text-[#664e44]">Cununia</span>
+                <span className="mt-1 flex items-center gap-1 text-sm text-[#b08b7f] whitespace-nowrap"><MapPin className="h-3.5 w-3.5 shrink-0" />Biserica Maranatha</span>
+              </a>
+              <a
+                href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.6876066,21.2375553,15z/data=!4m6!3m5!1s0x47455ea63ec2c3d1:0x64833cc2c242e0e4!8m2!3d45.684881!4d21.2377256!16s%2Fg%2F11gb3yskz2?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md"
+              >
+                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#faf4e5]">
+                  <Utensils className="h-7 w-7 text-[#664e44]" />
+                </div>
+                <span className="text-lg font-bold text-[#664e44]">Restaurant</span>
+                <span className="mt-1 flex items-center gap-1 text-sm text-[#b08b7f] whitespace-nowrap"><MapPin className="h-3.5 w-3.5 shrink-0" />Lakeside Flonta</span>
+              </a>
+            </div>
+          </div>
+
           {/* Program Timeline */}
           <div className="mb-16 text-center">
             <h2 className="font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">Program</h2>
-            <p className="mx-auto mt-5 max-w-[280px] sm:max-w-lg leading-relaxed text-[#b08b7f] text-balance">
-              Ceremonia și petrecerea vor avea loc la <br className="hidden sm:block" /> Lakeside Flonta.
-            </p>
+
             <div className="mt-6">
               <ProgramTimeline />
             </div>
@@ -474,7 +494,7 @@ export default function KasiiaPage() {
             </h2>
 
             <p className="mx-auto mt-5 max-w-[280px] sm:max-w-lg leading-relaxed text-[#b08b7f] text-balance">
-              Vă rugăm să ne confirmați prezența <br className="hidden sm:block" /> până la data de 1 Martie.
+              Vă rugăm să ne confirmați prezența <br className="hidden sm:block" /> până la data de 15 Martie.
             </p>
           </div>
 
