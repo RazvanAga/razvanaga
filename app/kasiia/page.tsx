@@ -262,12 +262,12 @@ const ProgramTimeline = () => {
   };
 
   const activities = [
-    { time: "15:00", label: "Cununia Religioasă", icon: Church },
-    { time: "17:00", label: "Restaurant", icon: Utensils },
-    { time: "18:30", label: "Supa", icon: Soup },
-    { time: "20:00", label: "Antreul", icon: Salad },
-    { time: "21:30", label: "Felul Principal", icon: UtensilsCrossed },
-    { time: "22:30", label: "Tortul", icon: Cake },
+    { time: "14:00", label: "Cununia Religioasă", icon: Church },
+    { time: "16:00", label: "Restaurant", icon: Utensils },
+    { time: "17:30", label: "Supa", icon: Soup },
+    { time: "19:00", label: "Antreul", icon: Salad },
+    { time: "20:30", label: "Felul Principal", icon: UtensilsCrossed },
+    { time: "21:30", label: "Tortul", icon: Cake },
   ];
 
   return (
