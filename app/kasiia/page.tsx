@@ -451,12 +451,12 @@ export default function KasiiaPage() {
           {/* Locatii */}
           <div className="mb-16 text-center">
             <h2 className="font-serif text-4xl font-medium text-[#664e44] sm:text-5xl">Locații</h2>
-            <div className="mt-6 flex gap-4">
+            <div className="mt-6 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
               <a
                 href="https://www.google.com/maps/place/Biserica+Adventist%C4%83+Maranatha/@45.7466411,21.2154907,17z/data=!3m1!4b1!4m6!3m5!1s0x47455d59d1680c25:0x712f6dbdb60dbab1!8m2!3d45.7466411!4d21.2154907!16s%2Fg%2F11xvz5_8v2?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-1 flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md"
+                className="flex-shrink-0 w-[calc(50%-0.5rem)] snap-start flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md"
               >
                 <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#faf4e5]">
                   <Church className="h-7 w-7 text-[#664e44]" />
@@ -468,7 +468,7 @@ export default function KasiiaPage() {
                 href="https://www.google.com/maps/place/LakeSide+Pool+%26+Ballroom/@45.6876066,21.2375553,15z/data=!4m6!3m5!1s0x47455ea63ec2c3d1:0x64833cc2c242e0e4!8m2!3d45.684881!4d21.2377256!16s%2Fg%2F11gb3yskz2?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-1 flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md"
+                className="flex-shrink-0 w-[calc(50%-0.5rem)] flex flex-col items-center rounded-2xl bg-white p-6 shadow-sm border border-[#c7c3b0]/50 transition-all hover:shadow-md"
               >
                 <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[#faf4e5]">
                   <Utensils className="h-7 w-7 text-[#664e44]" />
