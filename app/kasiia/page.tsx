@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Church, Utensils, Phone, MapPin, ImageUp, X } from "lucide-react";
 
+// Schimbă în true pentru a reactiva funcționalitatea de upload
+const SHOW_UPLOAD = false;
+
 // --- Countdown Component ---
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -245,7 +248,7 @@ export default function KasiiaPage() {
   return (
     <main className="min-h-screen w-full bg-[#ffe8d6] font-sans text-[#664e44] selection:bg-[#b08b7f] selection:text-white">
 
-      {showUpload && <UploadModal onClose={() => setShowUpload(false)} />}
+      {SHOW_UPLOAD && showUpload && <UploadModal onClose={() => setShowUpload(false)} />}
 
       {/* --- HERO SECTION --- */}
       <header className="relative h-[67vh] w-full overflow-hidden">
@@ -316,50 +319,52 @@ export default function KasiiaPage() {
             </div>
           </div>
 
-          {/* Upload Button */}
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-base leading-relaxed text-[#b08b7f] text-center">
-              Dăruiește-le mirilor<br />momentele surprinse prin ochii tăi.
-            </p>
-            <button
-              onClick={() => setShowUpload(true)}
-              className="inline-flex items-center gap-3 rounded-full bg-[#664e44] px-10 py-5 text-sm font-black uppercase tracking-[0.3em] text-[#ffe8d6] shadow-[0_20px_40px_-10px_rgba(102,78,68,0.4)] transition-all hover:bg-[#4d3a33] hover:scale-105"
-            >
-              <ImageUp className="h-5 w-5" />
-              Încarcă poze
-            </button>
-            <button
-              onClick={() => {
-                setShowChallenges((v) => !v);
-                if (!showChallenges) setTimeout(() => challengesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
-              }}
-              className="text-xs font-bold uppercase tracking-[0.15em] text-[#664e44] underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity"
-            >
-              {showChallenges ? "Ascunde lista" : "Arată-ți creativitatea și talentul de fotograf, participând la expoziția de fotografii din cadrul nunții."}
-            </button>
+          {/* Upload Section */}
+          {SHOW_UPLOAD && (
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-base leading-relaxed text-[#b08b7f] text-center">
+                Dăruiește-le mirilor<br />momentele surprinse prin ochii tăi.
+              </p>
+              <button
+                onClick={() => setShowUpload(true)}
+                className="inline-flex items-center gap-3 rounded-full bg-[#664e44] px-10 py-5 text-sm font-black uppercase tracking-[0.3em] text-[#ffe8d6] shadow-[0_20px_40px_-10px_rgba(102,78,68,0.4)] transition-all hover:bg-[#4d3a33] hover:scale-105"
+              >
+                <ImageUp className="h-5 w-5" />
+                Încarcă poze
+              </button>
+              <button
+                onClick={() => {
+                  setShowChallenges((v) => !v);
+                  if (!showChallenges) setTimeout(() => challengesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+                }}
+                className="text-xs font-bold uppercase tracking-[0.15em] text-[#664e44] underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity"
+              >
+                {showChallenges ? "Ascunde lista" : "Arată-ți creativitatea și talentul de fotograf, participând la expoziția de fotografii din cadrul nunții."}
+              </button>
 
-            {showChallenges && (
-              <div ref={challengesRef} className="w-full max-w-sm rounded-2xl bg-white border border-[#c7c3b0]/50 p-6 shadow-sm">
-                <p className="mb-4 text-sm leading-relaxed text-[#b08b7f] text-center">
-                  Surprinde unul sau mai multe din aceste ipostaze și încarcă-le mai sus pentru miri.
-                </p>
-                <ol className="space-y-3">
-                  {PHOTO_CHALLENGES.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-[#664e44]">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#faf4e5] text-xs font-bold text-[#b08b7f]">
-                        {i + 1}
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-          </div>
+              {showChallenges && (
+                <div ref={challengesRef} className="w-full max-w-sm rounded-2xl bg-white border border-[#c7c3b0]/50 p-6 shadow-sm">
+                  <p className="mb-4 text-sm leading-relaxed text-[#b08b7f] text-center">
+                    Surprinde unul sau mai multe din aceste ipostaze și încarcă-le mai sus pentru miri.
+                  </p>
+                  <ol className="space-y-3">
+                    {PHOTO_CHALLENGES.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-[#664e44]">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#faf4e5] text-xs font-bold text-[#b08b7f]">
+                          {i + 1}
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+          )}
 
         </div>
 
-        <footer className="mt-32 border-t border-[#c7c3b0]/20 pt-12 text-center">
+        <footer className="mt-8 border-t border-[#c7c3b0]/20 pt-8 text-center">
           <div className="flex flex-col items-center gap-3">
             <a href="https://wa.me/40774580663" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#664e44] opacity-80 hover:opacity-100 transition-opacity">
               <Phone className="h-4 w-4" />
