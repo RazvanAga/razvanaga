@@ -9,7 +9,11 @@
       "Bash(git stash:*)",
       "Bash(npm install:*)",
       "Bash(xargs cat:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(pip install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)"
     ]
   }
 }
