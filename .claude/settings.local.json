@@ -13,7 +13,11 @@
       "Bash(python3 -c \":*)",
       "Bash(pip install:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(rm tmpclaude-02bc-cwd:*)",
+      "Bash(rm public/file.svg public/globe.svg public/next.svg public/vercel.svg public/window.svg public/Nunta_29_Martie.xlsx)",
+      "Bash(rm design-mobile.png envelope.jpg seal2.png)",
+      "Bash(rm -rf Lakeside)"
     ]
   }
 }
