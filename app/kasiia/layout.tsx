@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.razvanaga.com"),
   title: "Nunta Răzvan & Kasiia",
   description: "29 Martie 2026",
   openGraph: {
