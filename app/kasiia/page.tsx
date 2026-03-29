@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { Church, Utensils, Phone, MapPin, ImageUp, UtensilsCrossed } from "lucide-react";
+import { Church, Utensils, Phone, MapPin, ImageUp, UtensilsCrossed, MessageCircleHeart } from "lucide-react";
 import { PHOTO_CHALLENGES } from "./data";
 import UploadModal from "./UploadModal";
 import SeatingSection from "./SeatingSection";
@@ -92,7 +92,14 @@ export default function KasiiaPage() {
 
       {showUpload && <UploadModal onClose={() => setShowUpload(false)} />}
 
-      {/* Hero */}
+      {/* Header compact (hero-ul original e commented out mai jos) */}
+      <header className="w-full bg-[#664e44] py-8 text-center text-[#ffe8d6]">
+        <h1 className="font-serif text-4xl font-medium tracking-tight sm:text-6xl">
+          Răzvan <span className="italic">&</span> Kasiia
+        </h1>
+      </header>
+
+      {/* Hero - TEMPORARILY HIDDEN
       <header className="relative h-[67vh] w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -124,12 +131,13 @@ export default function KasiiaPage() {
           </div>
         </div>
       </header>
+      */}
 
       {/* Content */}
       <div className="relative z-10 mt-2 bg-[#ffe8d6] px-6 pt-2 pb-24 shadow-[0_-20px_50px_-10px_rgba(102,78,68,0.2)] sm:px-12">
         <div className="mx-auto max-w-4xl">
 
-          {/* Locații */}
+          {/* Locații - TEMPORARILY HIDDEN
           <div className="mb-6 text-center">
             <div className="mt-6 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
               <a
@@ -155,6 +163,23 @@ export default function KasiiaPage() {
                 <span className="mt-2 font-serif text-3xl font-bold text-[#664e44]">16:00</span>
               </a>
             </div>
+          </div>
+          */}
+
+          {/* Formular invitați */}
+          <div className="flex flex-col items-center gap-3 mb-10">
+            <p className="text-center text-sm leading-relaxed text-[#b08b7f] max-w-xs">
+              Ajută-ne să facem nunta cât mai amuzantă! Completează formularul cu răspunsurile tale.
+            </p>
+            <a
+              href="https://forms.gle/TA32kCoAHvTDtm9A8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={BTN_CLASS}
+            >
+              <MessageCircleHeart className="h-5 w-5 shrink-0" />
+              <span className="whitespace-nowrap">Ce Spun Invitații?</span>
+            </a>
           </div>
 
           {/* Butoane */}
