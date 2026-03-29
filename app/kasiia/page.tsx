@@ -166,16 +166,19 @@ export default function KasiiaPage() {
           </div>
           */}
 
-          {/* Jocul Nunții */}
+          {/* Formular invitați */}
           <div className="flex flex-col items-center gap-3 mb-10">
+            <p className="text-center text-sm leading-relaxed text-[#b08b7f] max-w-xs">
+              Ajută-ne să facem nunta cât mai amuzantă! Completează formularul cu răspunsurile tale.
+            </p>
             <a
-              href="https://game.razvanaga.com/"
+              href="https://forms.gle/TA32kCoAHvTDtm9A8"
               target="_blank"
               rel="noopener noreferrer"
               className={BTN_CLASS}
             >
               <MessageCircleHeart className="h-5 w-5 shrink-0" />
-              <span className="whitespace-nowrap">Intră în Joc!</span>
+              <span className="whitespace-nowrap">Ce Spun Invitații?</span>
             </a>
           </div>
 
