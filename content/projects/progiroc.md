@@ -6,7 +6,7 @@ _**Live at [progiroc.com](https://progiroc.com/)**_
 
 ## What it does
 
-ProGiroc is a local community hub — a place where residents can post and browse marketplace listings, find local services, and stay connected with village life. It bridges the gap between the existing 30,000+ member Facebook group and a proper, purpose-built platform.
+ProGiroc is a local community hub, a place where residents can post and browse marketplace listings, find local services, and stay connected with village life. It bridges the gap between the existing 30,000+ member Facebook group and a proper, purpose-built platform.
 
 ## Tech Stack
 
@@ -23,4 +23,4 @@ ProGiroc is a local community hub — a place where residents can post and brows
 
 ## What I learned
 
-Running a real product end-to-end — from writing the code to managing the server to dealing with actual users — is a different experience from any professional job. You own everything: the uptime, the UX decisions, the customer complaints, and the revenue.
+Running a real product end-to-end, from writing the code to managing the server to dealing with actual users, is a different experience from any professional job. You own everything: the uptime, the UX decisions, the customer complaints, and the revenue.

@@ -59,36 +59,51 @@ export default function FileTree() {
               style={{ opacity: 0.9 }}
               onClick={() => toggleFolder(folder.name)}
             >
-              <span className="text-xs">{isExpanded ? "▼" : "▶"}</span>
+              <span
+                className="text-xs"
+                style={{
+                  display: "inline-block",
+                  transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
+                  transition: "transform 250ms ease",
+                }}
+              >▶</span>
               <span className="text-sm">/{folder.name}</span>
             </div>
 
             {/* Files inside folder */}
-            {isExpanded && (
-              <div className="ml-4">
-                {folder.files.map((file) => {
-                  const isSelected = currentFile === file.path;
-                  return (
-                    <div
-                      key={file.path}
-                      className="flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
-                      style={{ opacity: isSelected ? 1 : 0.65 }}
-                      onClick={() => openFile(file.path)}
-                    >
-                      <span className="text-xs">📄</span>
-                      <span className="text-sm" style={{ textDecoration: isSelected ? "underline" : "none" }}>{file.name}</span>
-                    </div>
-                  );
-                })}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateRows: isExpanded ? "1fr" : "0fr",
+                transition: "grid-template-rows 250ms ease",
+              }}
+            >
+              <div className="overflow-hidden">
+                <div className="ml-4">
+                  {folder.files.map((file) => {
+                    const isSelected = currentFile === file.path;
+                    return (
+                      <div
+                        key={file.path}
+                        className="file-row flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
+                        style={{ opacity: isSelected ? 1 : 0.65 }}
+                        onClick={() => openFile(file.path)}
+                      >
+                        <span className="text-xs">📄</span>
+                        <span className="text-sm" style={{ textDecoration: isSelected ? "underline" : "none" }}>{file.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         );
       })}
 
       {/* README at root */}
       <div
-        className="flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
+        className="file-row flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
         style={{ opacity: currentFile === "README" || currentFile === null ? 1 : 0.6 }}
         onClick={() => openFile("README")}
       >

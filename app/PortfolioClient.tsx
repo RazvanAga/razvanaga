@@ -16,7 +16,7 @@ export default function PortfolioClient({ initialContent }: PortfolioClientProps
       {/* Desktop layout */}
       <div
         className="hidden md:flex min-h-screen w-full items-center justify-center"
-        style={{ backgroundColor: "#ffffff" }}
+        style={{ backgroundColor: "#2a1a0e" }}
       >
         <div
           className="flex overflow-hidden w-[90vw] max-w-6xl h-[80vh]"

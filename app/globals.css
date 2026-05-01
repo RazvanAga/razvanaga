@@ -11,15 +11,33 @@ body {
   padding: 0;
 }
 
-/* Blinking cursor for terminal input */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* File row hover nudge */
+.file-row {
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+.file-row:hover {
+  transform: translateX(2px);
 }
 
-input[type="text"].caret-blink::after {
-  content: "_";
-  animation: blink 1s step-start infinite;
+/* Terminal line fade-in */
+@keyframes terminal-line-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 0.85; transform: translateY(0); }
+}
+
+.terminal-line {
+  animation: terminal-line-in 200ms ease forwards;
+}
+
+/* Typing cursor pulse */
+@keyframes cursor-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+input[type="text"].cursor-pulse {
+  caret-color: currentColor;
+  animation: cursor-pulse 2s ease-in-out infinite;
 }
 
 /* Scrollbar styling for left panel and right panel */

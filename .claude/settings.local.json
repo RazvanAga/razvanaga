@@ -30,7 +30,8 @@
       "Bash(py *)",
       "Bash(dir C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\app *)",
       "Bash(dir \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\public\" /b)",
-      "Bash(del *)"
+      "Bash(del *)",
+      "Bash(npx next *)"
     ]
   }
 }

@@ -241,13 +241,11 @@ function ContentWithPlaceholders({ content }: { content: string }) {
 export default function RightPanel({ initialContent }: RightPanelProps) {
   const { currentFile } = usePortfolio();
   const [content, setContent] = useState(initialContent);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const file = currentFile ?? "README";
 
     const fetchContent = async () => {
-      setLoading(true);
       try {
         const res = await fetch(`/api/content?file=${encodeURIComponent(file)}`);
         if (res.ok) {
@@ -258,8 +256,6 @@ export default function RightPanel({ initialContent }: RightPanelProps) {
         }
       } catch {
         setContent("# Error\n\nFailed to load content.");
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -273,8 +269,6 @@ export default function RightPanel({ initialContent }: RightPanelProps) {
         fontFamily: "var(--font-source-serif-4)",
         color: "#4a2f1f",
         backgroundColor: "#eae9df",
-        opacity: loading ? 0.6 : 1,
-        transition: "opacity 0.1s",
       }}
     >
       <div className="max-w-2xl mx-auto">

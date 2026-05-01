@@ -9,6 +9,8 @@ export default function Terminal() {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [savedInput, setSavedInput] = useState("");
+  const [flashing, setFlashing] = useState(false);
+  const [focused, setFocused] = useState(false);
   const historyEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -20,11 +22,15 @@ export default function Terminal() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
-    setCommandHistory((prev) => [inputValue, ...prev]);
-    setHistoryIndex(-1);
-    setSavedInput("");
-    runCommand(inputValue);
-    setInputValue("");
+    setFlashing(true);
+    setTimeout(() => {
+      setFlashing(false);
+      setCommandHistory((prev) => [inputValue, ...prev]);
+      setHistoryIndex(-1);
+      setSavedInput("");
+      runCommand(inputValue);
+      setInputValue("");
+    }, 80);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -68,7 +74,7 @@ export default function Terminal() {
       {/* History */}
       <div className="flex-1 overflow-y-auto px-3 pb-2">
         {terminalHistory.map((line, i) => (
-          <div key={i} style={{ opacity: 0.85, whiteSpace: "pre-wrap", wordBreak: "break-all" }}>
+          <div key={i} className="terminal-line" style={{ whiteSpace: "pre-wrap", wordBreak: "break-all" }}>
             {line}
           </div>
         ))}
@@ -77,18 +83,27 @@ export default function Terminal() {
 
       {/* Input line */}
       <form onSubmit={handleSubmit} className="flex items-center px-3 pb-3 gap-1 shrink-0">
-        <span style={{ opacity: 0.7 }}>{prompt}</span>
+        <span style={{
+          opacity: 0.7,
+          display: "inline-block",
+          transform: focused ? "translateX(2px)" : "translateX(0)",
+          transition: "transform 150ms ease",
+        }}>{prompt}</span>
         <input
           ref={inputRef}
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent outline-none border-none caret-current"
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className="flex-1 bg-transparent outline-none border-none caret-current cursor-pulse"
           style={{
             color: "inherit",
             fontFamily: "inherit",
             fontSize: "inherit",
+            opacity: flashing ? 0.2 : 1,
+            transition: "opacity 80ms ease",
           }}
           spellCheck={false}
           autoComplete="off"

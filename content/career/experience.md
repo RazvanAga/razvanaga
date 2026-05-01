@@ -1,6 +1,6 @@
 # Experience
 
-## Vitesco Technologies / Schaeffler — Software Engineer
+## Vitesco Technologies / Schaeffler - Software Engineer
 
 **July 2023 – present**
 
@@ -12,11 +12,11 @@ Worked on Battery Management Systems (BMS) for electric vehicles at one of Europ
 
 ---
 
-## ProGiroc — Founder
+## ProGiroc, Founder
 
 **November 2025 – present**
 
-Full-stack community platform for Giroc — local listings, news, and town information.
+Full-stack community platform for Giroc, local listings, news, and town information.
 
 - Designed and built the entire product solo: Next.js frontend, Supabase backend, self-hosted on a Linux VPS with Nginx
 - Grew an accompanying Facebook community to 30k+ members
@@ -24,7 +24,7 @@ Full-stack community platform for Giroc — local listings, news, and town infor
 
 ---
 
-## RoboKids — Founder & Instructor
+## RoboKids, Founder & Instructor
 
 **September 2024 – present**
 

@@ -1,6 +1,6 @@
 # RoboKids
 
-Programming and robotics classes for kids, founded and run in collaboration with an afterschool since September 2024.
+Programming and robotics classes for kids, founded and run in collaboration with an afterschool.
 
 ## What it is
 
@@ -8,14 +8,14 @@ RoboKids teaches children the fundamentals of programming and electronics throug
 
 ## What we teach
 
-- **Scratch** — visual programming for beginners
-- **Python** — text-based programming fundamentals
-- **Arduino** — microcontrollers and embedded basics
-- **Electronics** — circuits, components, and how things work
+- **Scratch**, visual programming for beginners
+- **Python**, text-based programming fundamentals
+- **Arduino**, microcontrollers and embedded basics
+- **Electronics**, circuits, components, and how things work
 
 ## How it runs
 
-The full curriculum was designed from scratch. Classes are planned, taught, and iterated on independently — no franchise, no pre-built materials. Just a curriculum that works and kids who enjoy it.
+The full curriculum was designed from scratch. Classes are planned, taught, and iterated on independently, no franchise, no pre-built materials. Just a curriculum that works and kids who enjoy it.
 
 ## Why I started it
 
