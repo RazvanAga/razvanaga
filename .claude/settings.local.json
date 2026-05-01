@@ -21,7 +21,9 @@
       "Bash(node -e \":*)",
       "PowerShell(New-Item *)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\app\" -Recurse -File | ForEach-Object { $_.FullName })",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\content\" -Recurse -File | ForEach-Object { $_.FullName })"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\content\" -Recurse -File | ForEach-Object { $_.FullName })",
+      "Bash(git rm *)",
+      "Bash(git cherry-pick *)"
     ]
   }
 }

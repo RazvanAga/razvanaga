@@ -1,13 +1,7 @@
 # Contact
 
-## Email
+::contact-email::
 
-[mail@razvanaga.com](mailto:mail@razvanaga.com)
+::contact-linkedin::
 
-## LinkedIn
-
-[linkedin.com/in/razvan-aga-5b5300278](https://www.linkedin.com/in/razvan-aga-5b5300278/)
-
-## GitHub
-
-[github.com/RazvanAga](https://github.com/RazvanAga)
+::contact-github::

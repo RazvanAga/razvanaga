@@ -14,14 +14,6 @@ interface FolderNode {
 
 const FOLDERS: FolderNode[] = [
   {
-    name: "about",
-    files: [
-      { name: "hobbies.md", path: "about/hobbies" },
-      { name: "family.md", path: "about/family" },
-      { name: "education.md", path: "about/education" },
-    ],
-  },
-  {
     name: "career",
     files: [
       { name: "experience.md", path: "career/experience" },
@@ -33,6 +25,14 @@ const FOLDERS: FolderNode[] = [
     files: [
       { name: "progiroc.md", path: "projects/progiroc" },
       { name: "robokids.md", path: "projects/robokids" },
+    ],
+  },
+  {
+    name: "about",
+    files: [
+      { name: "education.md", path: "about/education" },
+      { name: "hobbies.md", path: "about/hobbies" },
+      { name: "family.md", path: "about/family" },
     ],
   },
   {
@@ -49,20 +49,6 @@ export default function FileTree() {
       className="px-3 py-3 select-none"
       style={{ fontFamily: "var(--font-jetbrains-mono)" }}
     >
-      {/* README at root */}
-      <div
-        className="flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
-        style={{
-          opacity: currentFile === "README" || currentFile === null ? 1 : 0.6,
-          textDecoration:
-            currentFile === "README" || currentFile === null ? "underline" : "none",
-        }}
-        onClick={() => openFile("README")}
-      >
-        <span className="text-xs">📄</span>
-        <span className="text-sm">README.md</span>
-      </div>
-
       {/* Folders */}
       {FOLDERS.map((folder) => {
         const isExpanded = expandedFolders.has(folder.name);
@@ -103,6 +89,20 @@ export default function FileTree() {
           </div>
         );
       })}
+
+      {/* README at root */}
+      <div
+        className="flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
+        style={{
+          opacity: currentFile === "README" || currentFile === null ? 1 : 0.6,
+          textDecoration:
+            currentFile === "README" || currentFile === null ? "underline" : "none",
+        }}
+        onClick={() => openFile("README")}
+      >
+        <span className="text-xs">📄</span>
+        <span className="text-sm">README.md</span>
+      </div>
     </div>
   );
 }

@@ -9,6 +9,65 @@ interface RightPanelProps {
   initialContent: string;
 }
 
+const CONTACT_ITEMS = {
+  "contact-email": {
+    href: "mailto:mail@razvanaga.com",
+    label: "mail@razvanaga.com",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </svg>
+    ),
+  },
+  "contact-linkedin": {
+    href: "https://www.linkedin.com/in/razvan-aga-5b5300278/",
+    label: "linkedin.com/in/razvan-aga",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    ),
+  },
+  "contact-github": {
+    href: "https://github.com/RazvanAga",
+    label: "github.com/RazvanAga",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+      </svg>
+    ),
+  },
+} as const;
+
+type ContactKey = keyof typeof CONTACT_ITEMS;
+
+function ContactIcon({ type }: { type: ContactKey }) {
+  const { href, label, icon } = CONTACT_ITEMS[type];
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-4 py-3 px-4 mb-3 no-underline"
+      style={{
+        color: "#4a2f1f",
+        border: "1px solid rgba(74,47,31,0.25)",
+        fontFamily: "var(--font-jetbrains-mono)",
+        fontSize: "0.9rem",
+        transition: "opacity 0.15s",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.opacity = "0.65")}
+      onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+    >
+      {icon}
+      <span>{label}</span>
+    </a>
+  );
+}
+
 // Photo placeholder component
 function PhotoPlaceholder({ label }: { label: string }) {
   return (
@@ -124,24 +183,31 @@ const markdownComponents: Components = {
   ),
 };
 
-// Pre-process content: replace sentinel markers with placeholder components
-function ContentWithPlaceholders({ content }: { content: string }) {
-  const PHOTO_SENTINEL = "::photo-placeholder::";
-  const WEDDING_SENTINEL = "::wedding-photo-placeholder::";
+type PartType = "markdown" | "photo" | "wedding" | ContactKey;
 
-  const parts: Array<{ type: "markdown" | "photo" | "wedding"; text: string }> = [];
+const SENTINELS: Record<string, PartType> = {
+  "::photo-placeholder::": "photo",
+  "::wedding-photo-placeholder::": "wedding",
+  "::contact-email::": "contact-email",
+  "::contact-linkedin::": "contact-linkedin",
+  "::contact-github::": "contact-github",
+};
+
+function ContentWithPlaceholders({ content }: { content: string }) {
+  const parts: Array<{ type: PartType; text: string }> = [];
   let remaining = content;
 
   while (remaining.length > 0) {
-    const photoIdx = remaining.indexOf(PHOTO_SENTINEL);
-    const weddingIdx = remaining.indexOf(WEDDING_SENTINEL);
+    let firstIdx = -1;
+    let firstSentinel = "";
 
-    const firstIdx =
-      photoIdx === -1
-        ? weddingIdx
-        : weddingIdx === -1
-        ? photoIdx
-        : Math.min(photoIdx, weddingIdx);
+    for (const sentinel of Object.keys(SENTINELS)) {
+      const idx = remaining.indexOf(sentinel);
+      if (idx !== -1 && (firstIdx === -1 || idx < firstIdx)) {
+        firstIdx = idx;
+        firstSentinel = sentinel;
+      }
+    }
 
     if (firstIdx === -1) {
       parts.push({ type: "markdown", text: remaining });
@@ -152,24 +218,16 @@ function ContentWithPlaceholders({ content }: { content: string }) {
       parts.push({ type: "markdown", text: remaining.slice(0, firstIdx) });
     }
 
-    if (remaining.indexOf(PHOTO_SENTINEL) === firstIdx) {
-      parts.push({ type: "photo", text: "" });
-      remaining = remaining.slice(firstIdx + PHOTO_SENTINEL.length);
-    } else {
-      parts.push({ type: "wedding", text: "" });
-      remaining = remaining.slice(firstIdx + WEDDING_SENTINEL.length);
-    }
+    parts.push({ type: SENTINELS[firstSentinel], text: "" });
+    remaining = remaining.slice(firstIdx + firstSentinel.length);
   }
 
   return (
     <>
       {parts.map((part, i) => {
-        if (part.type === "photo") {
-          return <PhotoPlaceholder key={i} label="Photo coming soon" />;
-        }
-        if (part.type === "wedding") {
-          return <PhotoPlaceholder key={i} label="Wedding photo coming soon" />;
-        }
+        if (part.type === "photo") return <PhotoPlaceholder key={i} label="Photo coming soon" />;
+        if (part.type === "wedding") return <PhotoPlaceholder key={i} label="Wedding photo coming soon" />;
+        if (part.type in CONTACT_ITEMS) return <ContactIcon key={i} type={part.type as ContactKey} />;
         return (
           <ReactMarkdown key={i} remarkPlugins={[remarkGfm]} components={markdownComponents}>
             {part.text}

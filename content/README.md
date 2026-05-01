@@ -3,7 +3,7 @@
 ::photo-placeholder::
 
 **Age:** 24  
-**Location:** Giroc, Romania
+**Location:** Timisoara, Romania
 
 ---
 
