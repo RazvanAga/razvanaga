@@ -1,113 +1,42 @@
 @import "tailwindcss";
 
-html {
-  overflow-x: hidden;
-  width: 100%;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-html::-webkit-scrollbar {
-  display: none;
-}
-
-:root {
-  --background: #ffe8d6;
-  --foreground: #664e44;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-lato);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--font-source-serif-4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-body::-webkit-scrollbar {
-  display: none;
+/* Blinking cursor for terminal input */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* Ascunde scrollbar-ul pe toate elementele */
-* {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+input[type="text"].caret-blink::after {
+  content: "_";
+  animation: blink 1s step-start infinite;
 }
 
-*::-webkit-scrollbar {
-  display: none;
+/* Scrollbar styling for left panel and right panel */
+::-webkit-scrollbar {
+  width: 4px;
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-/* --- ENVELOPE ANIMATIONS --- */
-
-@keyframes flap-open {
-  0% {
-    transform: rotateX(0deg);
-    z-index: 50;
-  }
-  100% {
-    transform: rotateX(180deg);
-    z-index: 10;
-  }
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 47, 31, 0.3);
+  border-radius: 2px;
 }
 
-@keyframes letter-up {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100px);
-  }
-}
-
-@keyframes zoom-out-fade {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.1);
-    visibility: hidden;
-  }
-}
-
-.animate-flap {
-  transform-origin: top;
-  animation: flap-open 0.8s ease-in-out 0.5s forwards;
-}
-
-.animate-letter {
-  animation: letter-up 1s ease-out 1.2s forwards;
-}
-
-.animate-envelope-exit {
-  animation: zoom-out-fade 0.8s ease-in-out 2.5s forwards;
+/* Override for left panel scrollbar */
+.left-panel ::-webkit-scrollbar-thumb {
+  background: rgba(234, 233, 223, 0.3);
 }

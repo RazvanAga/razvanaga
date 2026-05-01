@@ -1,21 +1,20 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
-const lato = Lato({
-  variable: "--font-lato",
-  weight: ["100", "300", "400", "700", "900"],
+const sourceSerif4 = Source_Serif_4({
+  variable: "--font-source-serif-4",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Răzvan & Kasiia - RSVP Nuntă",
-  description: "Vă așteptăm alături de noi în cea mai specială zi!",
+  title: "Răzvan Aga",
+  description: "Portfolio",
 };
 
 export default function RootLayout({
@@ -24,10 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro">
-      <body
-        className={`${playfair.variable} ${lato.variable} antialiased`}
-      >
+    <html lang="en">
+      <body className={`${jetbrainsMono.variable} ${sourceSerif4.variable} antialiased`}>
         {children}
       </body>
     </html>
