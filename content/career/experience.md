@@ -2,13 +2,13 @@
 
 ## Vitesco Technologies / Schaeffler — Software Engineer
 
-**July 2023 – May 2026**
+**July 2023 – present**
 
 Worked on Battery Management Systems (BMS) for electric vehicles at one of Europe's top automotive suppliers. OEM customers included BMW, Mercedes, and Nissan.
 
-- Developed and maintained unit test suites in C for safety-critical BMS firmware
-- Ensured MISRA-C and CERT-C compliance across the codebase
-- Built internal Python tooling that was adopted across multiple teams
+- Wrote and maintained unit test suites in C for safety-critical BMS firmware; ran validation on physical testbenches
+- Enforced MISRA-C and CERT-C compliance through static analysis; performed code integration and integration reviews across BMS modules
+- Built internal Python tooling adopted across multiple engineering teams in the organization: test generators, Excel data pipelines, and database UIs
 
 ---
 
@@ -16,12 +16,11 @@ Worked on Battery Management Systems (BMS) for electric vehicles at one of Europ
 
 **November 2025 – present**
 
-Built and launched a community platform for the village of Giroc from scratch.
+Full-stack community platform for Giroc — local listings, news, and town information.
 
-- Stack: Next.js, Supabase, Linux VPS, Nginx
-- Serves a Facebook community of 30,000+ members
-- 500+ active marketplace listings
-- Monetized through promoted listings
+- Designed and built the entire product solo: Next.js frontend, Supabase backend, self-hosted on a Linux VPS with Nginx
+- Grew an accompanying Facebook community to 30k+ members
+- 500+ active listings posted by real users; monetized through promoted listings
 
 ---
 
@@ -29,7 +28,7 @@ Built and launched a community platform for the village of Giroc from scratch.
 
 **September 2024 – present**
 
-Founded and run a robotics school for kids independently.
+Programming and robotics courses for children at an afterschool.
 
 - Teaching Scratch, Python, Arduino, and electronics
 - Full curriculum designed and delivered independently

@@ -6,6 +6,9 @@ import { usePortfolio } from "../context/PortfolioContext";
 export default function Terminal() {
   const { terminalHistory, currentDir, runCommand } = usePortfolio();
   const [inputValue, setInputValue] = useState("");
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const [savedInput, setSavedInput] = useState("");
   const historyEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -17,8 +20,28 @@ export default function Terminal() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
+    setCommandHistory((prev) => [inputValue, ...prev]);
+    setHistoryIndex(-1);
+    setSavedInput("");
     runCommand(inputValue);
     setInputValue("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (commandHistory.length === 0) return;
+      if (historyIndex === -1) setSavedInput(inputValue);
+      const nextIndex = Math.min(historyIndex + 1, commandHistory.length - 1);
+      setHistoryIndex(nextIndex);
+      setInputValue(commandHistory[nextIndex]);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex === -1) return;
+      const nextIndex = historyIndex - 1;
+      setHistoryIndex(nextIndex);
+      setInputValue(nextIndex === -1 ? savedInput : commandHistory[nextIndex]);
+    }
   };
 
   const handleContainerClick = () => {
@@ -60,6 +83,7 @@ export default function Terminal() {
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           className="flex-1 bg-transparent outline-none border-none caret-current"
           style={{
             color: "inherit",

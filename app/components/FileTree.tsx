@@ -32,7 +32,6 @@ const FOLDERS: FolderNode[] = [
     files: [
       { name: "education.md", path: "about/education" },
       { name: "hobbies.md", path: "about/hobbies" },
-      { name: "family.md", path: "about/family" },
     ],
   },
   {
@@ -73,14 +72,11 @@ export default function FileTree() {
                     <div
                       key={file.path}
                       className="flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
-                      style={{
-                        opacity: isSelected ? 1 : 0.65,
-                        textDecoration: isSelected ? "underline" : "none",
-                      }}
+                      style={{ opacity: isSelected ? 1 : 0.65 }}
                       onClick={() => openFile(file.path)}
                     >
                       <span className="text-xs">📄</span>
-                      <span className="text-sm">{file.name}</span>
+                      <span className="text-sm" style={{ textDecoration: isSelected ? "underline" : "none" }}>{file.name}</span>
                     </div>
                   );
                 })}
@@ -93,15 +89,11 @@ export default function FileTree() {
       {/* README at root */}
       <div
         className="flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
-        style={{
-          opacity: currentFile === "README" || currentFile === null ? 1 : 0.6,
-          textDecoration:
-            currentFile === "README" || currentFile === null ? "underline" : "none",
-        }}
+        style={{ opacity: currentFile === "README" || currentFile === null ? 1 : 0.6 }}
         onClick={() => openFile("README")}
       >
         <span className="text-xs">📄</span>
-        <span className="text-sm">README.md</span>
+        <span className="text-sm" style={{ textDecoration: currentFile === "README" || currentFile === null ? "underline" : "none" }}>README.md</span>
       </div>
     </div>
   );

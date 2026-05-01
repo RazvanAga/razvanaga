@@ -1,6 +1,6 @@
 # RoboKids
 
-A robotics school for kids, founded and run independently since September 2024.
+Programming and robotics classes for kids, founded and run in collaboration with an afterschool since September 2024.
 
 ## What it is
 

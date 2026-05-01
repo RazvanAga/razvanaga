@@ -23,7 +23,14 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\app\" -Recurse -File | ForEach-Object { $_.FullName })",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\content\" -Recurse -File | ForEach-Object { $_.FullName })",
       "Bash(git rm *)",
-      "Bash(git cherry-pick *)"
+      "Bash(git cherry-pick *)",
+      "Bash(python3 *)",
+      "Bash(python -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(py -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(py *)",
+      "Bash(dir C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\app *)",
+      "Bash(dir \"C:\\\\Users\\\\Razvan\\\\Projects\\\\razvan-aga\\\\razvan-aga\\\\public\" /b)",
+      "Bash(del *)"
     ]
   }
 }

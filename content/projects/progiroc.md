@@ -1,6 +1,8 @@
 # ProGiroc
 
-A community platform for the village of Giroc, Romania. Built from scratch and launched independently.
+A community platform for the growing town of Giroc, Romania. Built from scratch and launched independently.
+
+_**Live at [progiroc.com](https://progiroc.com/)**_
 
 ## What it does
 

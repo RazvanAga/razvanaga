@@ -225,7 +225,7 @@ function ContentWithPlaceholders({ content }: { content: string }) {
   return (
     <>
       {parts.map((part, i) => {
-        if (part.type === "photo") return <PhotoPlaceholder key={i} label="Photo coming soon" />;
+        if (part.type === "photo") return <img key={i} src="/razvan.jpg" alt="Răzvan Aga" className="w-32 h-32 rounded-full object-cover mb-6" />;
         if (part.type === "wedding") return <PhotoPlaceholder key={i} label="Wedding photo coming soon" />;
         if (part.type in CONTACT_ITEMS) return <ContactIcon key={i} type={part.type as ContactKey} />;
         return (
