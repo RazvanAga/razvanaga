@@ -49,6 +49,8 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
 
   const toggleFolder = useCallback(
     (name: string) => {
+      const isExpanded = expandedFolders.has(name);
+      addTerminalLine(isExpanded ? `> cd ..` : `> cd /${name}`);
       setExpandedFolders((prev) => {
         const next = new Set(prev);
         if (next.has(name)) {
@@ -58,9 +60,8 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         }
         return next;
       });
-      addTerminalLine(`> cd /${name}`);
     },
-    [addTerminalLine]
+    [expandedFolders, addTerminalLine]
   );
 
   const runCommand = useCallback(
