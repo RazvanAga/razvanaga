@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useCallback } from "react";
 // File system structure for terminal navigation
 const FILE_SYSTEM: Record<string, string[]> = {
   "/": ["about", "career", "projects", "contact", "README.md"],
-  "/about": ["hobbies.md", "family.md", "education.md"],
+  "/about": ["education.md"],
   "/career": ["experience.md", "skills.md"],
   "/projects": ["progiroc.md", "robokids.md"],
   "/contact": ["contact.md"],
@@ -28,7 +28,9 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const [currentFile, setCurrentFile] = useState<string | null>(null);
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set());
   const [terminalHistory, setTerminalHistory] = useState<string[]>([
-    'Welcome to razvan-aga. Type "ls" to explore.',
+    "razvan-aga v1.0",
+    'type "ls" to browse the files',
+    'type "help" for commands',
   ]);
   const [currentDir, setCurrentDir] = useState("/");
 
@@ -145,6 +147,27 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         } else {
           addTerminalLine(`cat: ${arg}: No such file`);
         }
+        return;
+      }
+
+      if (command === "help") {
+        addTerminalLine("Available commands:");
+        addTerminalLine("  ls          list contents of current directory");
+        addTerminalLine("  cd <dir>    change directory");
+        addTerminalLine("  cat <file>  open a file");
+        addTerminalLine("  pwd         print current directory");
+        addTerminalLine("  whoami      who are you?");
+        addTerminalLine("  clear       clear terminal");
+        return;
+      }
+
+      if (command === "pwd") {
+        addTerminalLine(currentDir);
+        return;
+      }
+
+      if (command === "whoami") {
+        addTerminalLine("Razvan Aga — fullstack engineer");
         return;
       }
 

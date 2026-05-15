@@ -13,8 +13,15 @@ const sourceSerif4 = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Razvan Aga",
-  description: "Portfolio",
+  title: "Razvan Aga — Fullstack Engineer",
+  description: "Fullstack engineer based in Timișoara.",
+  openGraph: {
+    title: "Razvan Aga — Fullstack Engineer",
+    description: "Fullstack engineer based in Timișoara.",
+    url: "https://razvanaga.com",
+    siteName: "Razvan Aga",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

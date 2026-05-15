@@ -2,6 +2,13 @@
 
 import { usePortfolio } from "../context/PortfolioContext";
 
+const FileIcon = () => (
+  <svg width="11" height="13" viewBox="0 0 11 13" fill="none" style={{ opacity: 0.6, flexShrink: 0 }}>
+    <path d="M1 1h6l3 3v8H1V1z" stroke="currentColor" strokeWidth="1" />
+    <path d="M7 1v3h3" stroke="currentColor" strokeWidth="1" />
+  </svg>
+);
+
 interface FileNode {
   name: string;
   path: string;
@@ -31,7 +38,6 @@ const FOLDERS: FolderNode[] = [
     name: "about",
     files: [
       { name: "education.md", path: "about/education" },
-      { name: "hobbies.md", path: "about/hobbies" },
     ],
   },
   {
@@ -67,7 +73,13 @@ export default function FileTree() {
                   transition: "transform 250ms ease",
                 }}
               >▶</span>
-              <span className="text-sm">/{folder.name}</span>
+              <span
+                className="text-sm"
+                style={{
+                  fontWeight: isExpanded ? 600 : undefined,
+                  opacity: isExpanded ? 1 : undefined,
+                }}
+              >/{folder.name}</span>
             </div>
 
             {/* Files inside folder */}
@@ -89,7 +101,7 @@ export default function FileTree() {
                         style={{ opacity: isSelected ? 1 : 0.65 }}
                         onClick={() => openFile(file.path)}
                       >
-                        <span className="text-xs">📄</span>
+                        <FileIcon />
                         <span className="text-sm" style={{ textDecoration: isSelected ? "underline" : "none" }}>{file.name}</span>
                       </div>
                     );
@@ -107,7 +119,7 @@ export default function FileTree() {
         style={{ opacity: currentFile === "README" || currentFile === null ? 1 : 0.6 }}
         onClick={() => openFile("README")}
       >
-        <span className="text-xs">📄</span>
+        <FileIcon />
         <span className="text-sm" style={{ textDecoration: currentFile === "README" || currentFile === null ? "underline" : "none" }}>README.md</span>
       </div>
     </div>

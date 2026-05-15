@@ -271,7 +271,7 @@ export default function RightPanel({ initialContent }: RightPanelProps) {
         backgroundColor: "#eae9df",
       }}
     >
-      <div className="max-w-2xl mx-auto">
+      <div key={currentFile ?? "readme"} className="max-w-2xl mx-auto content-enter">
         <ContentWithPlaceholders content={content} />
       </div>
     </div>
