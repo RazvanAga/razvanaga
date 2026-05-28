@@ -25,6 +25,7 @@ const FOLDERS: FolderNode[] = [
     files: [
       { name: "experience.md", path: "career/experience" },
       { name: "skills.md", path: "career/skills" },
+      { name: "education.md", path: "career/education" },
     ],
   },
   {
@@ -32,12 +33,6 @@ const FOLDERS: FolderNode[] = [
     files: [
       { name: "progiroc.md", path: "projects/progiroc" },
       { name: "robokids.md", path: "projects/robokids" },
-    ],
-  },
-  {
-    name: "about",
-    files: [
-      { name: "education.md", path: "about/education" },
     ],
   },
   {

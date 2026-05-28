@@ -7,11 +7,9 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 // Allowed file paths to prevent directory traversal
 const ALLOWED_FILES = new Set([
   "README",
-  "about/hobbies",
-  "about/family",
-  "about/education",
   "career/experience",
   "career/skills",
+  "career/education",
   "projects/progiroc",
   "projects/robokids",
   "contact/contact",

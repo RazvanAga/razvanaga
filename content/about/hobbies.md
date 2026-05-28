@@ -1,3 +1,0 @@
-# Hobbies
-
-Coming soon.

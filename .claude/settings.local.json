@@ -44,7 +44,8 @@
       "Bash(GIT_SEQUENCE_EDITOR=\"/tmp/seq_editor.sh\" GIT_EDITOR=\"/tmp/commit_editor.sh\" git rebase *)",
       "Bash(git fetch *)",
       "Bash(gh api *)",
-      "Skill(frontend-design:frontend-design)"
+      "Skill(frontend-design:frontend-design)",
+      "Bash(Remove-Item *)"
     ]
   }
 }

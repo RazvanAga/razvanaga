@@ -23,6 +23,7 @@ const TABS: TabData[] = [
     files: [
       { name: "experience.md", path: "career/experience" },
       { name: "skills.md", path: "career/skills" },
+      { name: "education.md", path: "career/education" },
     ],
   },
   {
@@ -31,14 +32,6 @@ const TABS: TabData[] = [
     files: [
       { name: "progiroc.md", path: "projects/progiroc" },
       { name: "robokids.md", path: "projects/robokids" },
-    ],
-  },
-  {
-    label: "/about",
-    key: "about",
-    files: [
-      { name: "hobbies.md", path: "about/hobbies" },
-      { name: "education.md", path: "about/education" },
     ],
   },
   {
