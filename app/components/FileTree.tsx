@@ -1,6 +1,7 @@
 "use client";
 
 import { usePortfolio } from "../context/PortfolioContext";
+import { FOLDERS, README } from "../lib/files";
 
 const FileIcon = () => (
   <svg width="11" height="13" viewBox="0 0 11 13" fill="none" style={{ opacity: 0.6, flexShrink: 0 }}>
@@ -8,38 +9,6 @@ const FileIcon = () => (
     <path d="M7 1v3h3" stroke="currentColor" strokeWidth="1" />
   </svg>
 );
-
-interface FileNode {
-  name: string;
-  path: string;
-}
-
-interface FolderNode {
-  name: string;
-  files: FileNode[];
-}
-
-const FOLDERS: FolderNode[] = [
-  {
-    name: "career",
-    files: [
-      { name: "experience.md", path: "career/experience" },
-      { name: "skills.md", path: "career/skills" },
-      { name: "education.md", path: "career/education" },
-    ],
-  },
-  {
-    name: "projects",
-    files: [
-      { name: "progiroc.md", path: "projects/progiroc" },
-      { name: "robokids.md", path: "projects/robokids" },
-    ],
-  },
-  {
-    name: "contact",
-    files: [{ name: "contact.md", path: "contact/contact" }],
-  },
-];
 
 export default function FileTree() {
   const { currentFile, expandedFolders, openFile, toggleFolder } = usePortfolio();
@@ -111,11 +80,11 @@ export default function FileTree() {
       {/* README at root */}
       <div
         className="file-row flex items-center gap-1 py-0.5 px-1 cursor-pointer rounded-sm"
-        style={{ opacity: currentFile === "README" || currentFile === null ? 1 : 0.6 }}
-        onClick={() => openFile("README")}
+        style={{ opacity: currentFile === README.path || currentFile === null ? 1 : 0.6 }}
+        onClick={() => openFile(README.path)}
       >
         <FileIcon />
-        <span className="text-sm" style={{ textDecoration: currentFile === "README" || currentFile === null ? "underline" : "none" }}>README.md</span>
+        <span className="text-sm" style={{ textDecoration: currentFile === README.path || currentFile === null ? "underline" : "none" }}>{README.name}</span>
       </div>
     </div>
   );

@@ -1,15 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-
-// File system structure for terminal navigation
-const FILE_SYSTEM: Record<string, string[]> = {
-  "/": ["about", "career", "projects", "contact", "README.md"],
-  "/about": ["education.md"],
-  "/career": ["experience.md", "skills.md"],
-  "/projects": ["progiroc.md", "robokids.md"],
-  "/contact": ["contact.md"],
-};
+import { FILE_SYSTEM, contentPathFor } from "../lib/files";
 
 interface PortfolioContextType {
   currentFile: string | null;
@@ -23,6 +15,19 @@ interface PortfolioContextType {
 }
 
 const PortfolioContext = createContext<PortfolioContextType | null>(null);
+
+// Resolve an argument like "skills.md", "career/skills.md", or "/career/skills.md"
+// against the current directory. Returns the content path or null.
+function resolveFileArg(currentDir: string, arg: string): string | null {
+  const filename = arg.endsWith(".md") ? arg : `${arg}.md`;
+  const absolute = filename.startsWith("/")
+    ? filename
+    : `${currentDir === "/" ? "" : currentDir}/${filename}`;
+  const lastSlash = absolute.lastIndexOf("/");
+  const dir = lastSlash === 0 ? "/" : absolute.slice(0, lastSlash);
+  const name = absolute.slice(lastSlash + 1);
+  return contentPathFor(dir, name);
+}
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const [currentFile, setCurrentFile] = useState<string | null>(null);
@@ -130,20 +135,9 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
           addTerminalLine("cat: missing filename");
           return;
         }
-        const filename = arg.endsWith(".md") ? arg : `${arg}.md`;
-        // Determine directory to search
-        const searchDir = currentDir;
-        const entries = FILE_SYSTEM[searchDir] ?? [];
-        if (entries.includes(filename)) {
-          // Build file path: folder/filename (without .md extension for currentFile)
-          const folder = searchDir === "/" ? "" : searchDir.replace("/", "");
-          const filePath =
-            searchDir === "/"
-              ? filename === "README.md"
-                ? "README"
-                : filename.replace(".md", "")
-              : `${folder}/${filename.replace(".md", "")}`;
-          setCurrentFile(filePath);
+        const contentPath = resolveFileArg(currentDir, arg);
+        if (contentPath) {
+          setCurrentFile(contentPath);
         } else {
           addTerminalLine(`cat: ${arg}: No such file`);
         }

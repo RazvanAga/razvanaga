@@ -2,43 +2,22 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePortfolio } from "../context/PortfolioContext";
-
-interface FileEntry {
-  name: string;
-  path: string;
-}
+import { FOLDERS, README, ContentFile } from "../lib/files";
 
 interface TabData {
   label: string;
   key: string;
-  files?: FileEntry[];
+  files?: ContentFile[];
   isReadme?: boolean;
 }
 
 const TABS: TabData[] = [
   { label: "README", key: "readme", isReadme: true },
-  {
-    label: "/career",
-    key: "career",
-    files: [
-      { name: "experience.md", path: "career/experience" },
-      { name: "skills.md", path: "career/skills" },
-      { name: "education.md", path: "career/education" },
-    ],
-  },
-  {
-    label: "/projects",
-    key: "projects",
-    files: [
-      { name: "progiroc.md", path: "projects/progiroc" },
-      { name: "robokids.md", path: "projects/robokids" },
-    ],
-  },
-  {
-    label: "/contact",
-    key: "contact",
-    files: [{ name: "contact.md", path: "contact/contact" }],
-  },
+  ...FOLDERS.map((folder) => ({
+    label: `/${folder.name}`,
+    key: folder.name,
+    files: folder.files,
+  })),
 ];
 
 export default function MobileTabs() {
@@ -47,9 +26,7 @@ export default function MobileTabs() {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [displayedFiles, setDisplayedFiles] = useState<FileEntry[]>([]);
-
-  const currentTab = TABS.find((t) => t.key === activeTab);
+  const [displayedFiles, setDisplayedFiles] = useState<ContentFile[]>([]);
 
   useEffect(() => {
     const idx = TABS.findIndex((t) => t.key === activeTab);
@@ -60,7 +37,7 @@ export default function MobileTabs() {
   const handleTabClick = (tab: TabData) => {
     setActiveTab(tab.key);
     if (tab.isReadme) {
-      openFile("README");
+      openFile(README.path);
       setDrawerOpen(false);
     } else if (tab.files) {
       if (drawerOpen) {
@@ -78,40 +55,33 @@ export default function MobileTabs() {
 
   return (
     <div
-      className="flex flex-col"
-      style={{
-        backgroundColor: "#4a2f1f",
-        color: "#eae9df",
-        fontFamily: "var(--font-jetbrains-mono)",
-      }}
+      className="flex flex-col bg-ink text-paper"
+      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
     >
       {/* Tab bar */}
-      <div className="relative flex overflow-x-auto" style={{ borderBottom: "1px solid rgba(234,233,223,0.2)" }}>
+      <div className="relative flex overflow-x-auto border-b border-paper/20">
         {TABS.map((tab, i) => (
           <button
             key={tab.key}
             ref={(el) => { tabRefs.current[i] = el; }}
             onClick={() => handleTabClick(tab)}
-            className="px-3 py-2 text-xs whitespace-nowrap shrink-0"
-            style={{
-              backgroundColor: activeTab === tab.key ? "rgba(234,233,223,0.15)" : "transparent",
-              color: "#eae9df",
-              opacity: activeTab === tab.key ? 1 : 0.6,
-              borderBottom: "2px solid transparent",
-            }}
+            className={`px-3 py-2 text-xs whitespace-nowrap shrink-0 text-paper ${
+              activeTab === tab.key ? "bg-paper/15 opacity-100" : "bg-transparent opacity-60"
+            }`}
+            style={{ borderBottom: "2px solid transparent" }}
           >
             {tab.label}
           </button>
         ))}
         {/* Sliding indicator */}
         <span
+          className="bg-paper"
           style={{
             position: "absolute",
             bottom: 0,
             left: indicator.left,
             width: indicator.width,
             height: "2px",
-            backgroundColor: "#eae9df",
             transition: "left 400ms ease, width 400ms ease",
           }}
         />
@@ -132,12 +102,9 @@ export default function MobileTabs() {
               return (
                 <div
                   key={file.path}
-                  className="px-4 py-2 text-sm cursor-pointer"
-                  style={{
-                    opacity: isSelected ? 1 : 0.65,
-                    textDecoration: isSelected ? "underline" : "none",
-                    backgroundColor: isSelected ? "rgba(234,233,223,0.1)" : "transparent",
-                  }}
+                  className={`px-4 py-2 text-sm cursor-pointer ${
+                    isSelected ? "opacity-100 underline bg-paper/10" : "opacity-65 bg-transparent"
+                  }`}
                   onClick={() => openFile(file.path)}
                 >
                   {file.name}

@@ -45,7 +45,10 @@
       "Bash(git fetch *)",
       "Bash(gh api *)",
       "Skill(frontend-design:frontend-design)",
-      "Bash(Remove-Item *)"
+      "Bash(Remove-Item *)",
+      "Bash(npm why *)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm run lint)"
     ]
   }
 }

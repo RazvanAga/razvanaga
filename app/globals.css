@@ -5,6 +5,12 @@
   --font-serif: var(--font-source-serif-4);
 }
 
+@theme {
+  --color-ink: #4a2f1f;   /* dark brown — panels, text */
+  --color-paper: #eae9df; /* warm off-white — content background */
+  --color-frame: #2a1a0e; /* darkest brown — desktop backdrop */
+}
+
 html,
 body {
   margin: 0;
@@ -50,13 +56,13 @@ input[type="text"].cursor-pulse {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(74, 47, 31, 0.3);
+  background: color-mix(in srgb, var(--color-ink) 30%, transparent);
   border-radius: 2px;
 }
 
 /* Override for left panel scrollbar */
 .left-panel ::-webkit-scrollbar-thumb {
-  background: rgba(234, 233, 223, 0.3);
+  background: color-mix(in srgb, var(--color-paper) 30%, transparent);
 }
 
 /* Subtle noise texture on left panel */

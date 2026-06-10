@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import ReactMarkdown, { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { usePortfolio } from "../context/PortfolioContext";
+import { README } from "../lib/files";
 
 interface RightPanelProps {
-  initialContent: string;
+  content: Record<string, string>;
 }
 
 const CONTACT_ITEMS = {
@@ -51,10 +52,8 @@ function ContactIcon({ type }: { type: ContactKey }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-4 py-3 px-4 mb-3 no-underline"
+      className="flex items-center gap-4 py-3 px-4 mb-3 no-underline text-ink border border-ink/25"
       style={{
-        color: "#4a2f1f",
-        border: "1px solid rgba(74,47,31,0.25)",
         fontFamily: "var(--font-jetbrains-mono)",
         fontSize: "0.9rem",
         transition: "opacity 0.15s",
@@ -72,10 +71,8 @@ function ContactIcon({ type }: { type: ContactKey }) {
 function PhotoPlaceholder({ label }: { label: string }) {
   return (
     <div
-      className="w-32 h-32 rounded-full flex items-center justify-center mb-6 text-xs text-center leading-tight"
+      className="w-32 h-32 rounded-full flex items-center justify-center mb-6 text-xs text-center leading-tight bg-ink text-paper"
       style={{
-        backgroundColor: "#4a2f1f",
-        color: "#eae9df",
         fontFamily: "var(--font-jetbrains-mono)",
         opacity: 0.6,
       }}
@@ -111,14 +108,14 @@ const markdownComponents: Components = {
       {children}
     </h3>
   ),
-  hr: () => <hr className="my-6" style={{ borderColor: "#4a2f1f", opacity: 0.2 }} />,
+  hr: () => <hr className="my-6 border-ink/20" />,
   a: ({ href, children }) => (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      style={{ color: "#4a2f1f", textDecorationStyle: "dotted" }}
-      className="underline"
+      className="underline text-ink"
+      style={{ textDecorationStyle: "dotted" }}
     >
       {children}
     </a>
@@ -132,10 +129,8 @@ const markdownComponents: Components = {
     if (isBlock) {
       return (
         <pre
-          className="p-4 rounded my-4 overflow-x-auto"
+          className="p-4 rounded my-4 overflow-x-auto bg-ink text-paper"
           style={{
-            backgroundColor: "#4a2f1f",
-            color: "#eae9df",
             fontFamily: "var(--font-jetbrains-mono)",
             fontSize: "0.85rem",
           }}
@@ -146,12 +141,8 @@ const markdownComponents: Components = {
     }
     return (
       <code
-        className="px-1 rounded text-sm"
-        style={{
-          backgroundColor: "#4a2f1f",
-          color: "#eae9df",
-          fontFamily: "var(--font-jetbrains-mono)",
-        }}
+        className="px-1 rounded text-sm bg-ink text-paper"
+        style={{ fontFamily: "var(--font-jetbrains-mono)" }}
       >
         {children}
       </code>
@@ -164,22 +155,14 @@ const markdownComponents: Components = {
   ),
   th: ({ children }) => (
     <th
-      className="text-left px-3 py-2 font-bold"
-      style={{
-        borderBottom: "2px solid #4a2f1f",
-        fontFamily: "var(--font-jetbrains-mono)",
-      }}
+      className="text-left px-3 py-2 font-bold border-b-2 border-ink"
+      style={{ fontFamily: "var(--font-jetbrains-mono)" }}
     >
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td
-      className="px-3 py-2"
-      style={{ borderBottom: "1px solid rgba(74,47,31,0.2)" }}
-    >
-      {children}
-    </td>
+    <td className="px-3 py-2 border-b border-ink/20">{children}</td>
   ),
 };
 
@@ -194,38 +177,30 @@ const SENTINELS: Record<string, PartType> = {
 };
 
 function ContentWithPlaceholders({ content }: { content: string }) {
-  const parts: Array<{ type: PartType; text: string }> = [];
-  let remaining = content;
-
-  while (remaining.length > 0) {
-    let firstIdx = -1;
-    let firstSentinel = "";
-
-    for (const sentinel of Object.keys(SENTINELS)) {
-      const idx = remaining.indexOf(sentinel);
-      if (idx !== -1 && (firstIdx === -1 || idx < firstIdx)) {
-        firstIdx = idx;
-        firstSentinel = sentinel;
-      }
-    }
-
-    if (firstIdx === -1) {
-      parts.push({ type: "markdown", text: remaining });
-      break;
-    }
-
-    if (firstIdx > 0) {
-      parts.push({ type: "markdown", text: remaining.slice(0, firstIdx) });
-    }
-
-    parts.push({ type: SENTINELS[firstSentinel], text: "" });
-    remaining = remaining.slice(firstIdx + firstSentinel.length);
-  }
+  const parts: Array<{ type: PartType; text: string }> = content
+    .split(/(::[\w-]+::)/g)
+    .filter((segment) => segment.length > 0)
+    .map((segment) =>
+      segment in SENTINELS
+        ? { type: SENTINELS[segment], text: "" }
+        : { type: "markdown" as const, text: segment }
+    );
 
   return (
     <>
       {parts.map((part, i) => {
-        if (part.type === "photo") return <img key={i} src="/razvan.jpg" alt="Răzvan Aga" className="w-32 h-32 rounded-full object-cover mb-6" />;
+        if (part.type === "photo")
+          return (
+            <Image
+              key={i}
+              src="/razvan.jpg"
+              alt="Răzvan Aga"
+              width={128}
+              height={128}
+              className="w-32 h-32 rounded-full object-cover mb-6"
+              priority
+            />
+          );
         if (part.type === "wedding") return <PhotoPlaceholder key={i} label="Wedding photo coming soon" />;
         if (part.type in CONTACT_ITEMS) return <ContactIcon key={i} type={part.type as ContactKey} />;
         return (
@@ -238,41 +213,18 @@ function ContentWithPlaceholders({ content }: { content: string }) {
   );
 }
 
-export default function RightPanel({ initialContent }: RightPanelProps) {
+export default function RightPanel({ content }: RightPanelProps) {
   const { currentFile } = usePortfolio();
-  const [content, setContent] = useState(initialContent);
-
-  useEffect(() => {
-    const file = currentFile ?? "README";
-
-    const fetchContent = async () => {
-      try {
-        const res = await fetch(`/api/content?file=${encodeURIComponent(file)}`);
-        if (res.ok) {
-          const text = await res.text();
-          setContent(text);
-        } else {
-          setContent(`# Not Found\n\nFile not found: ${file}`);
-        }
-      } catch {
-        setContent("# Error\n\nFailed to load content.");
-      }
-    };
-
-    fetchContent();
-  }, [currentFile]);
+  const file = currentFile ?? README.path;
+  const markdown = content[file] ?? `# Not Found\n\nFile not found: ${file}`;
 
   return (
     <div
-      className="h-full overflow-y-auto px-8 py-10"
-      style={{
-        fontFamily: "var(--font-source-serif-4)",
-        color: "#4a2f1f",
-        backgroundColor: "#eae9df",
-      }}
+      className="h-full overflow-y-auto px-8 py-10 text-ink bg-paper"
+      style={{ fontFamily: "var(--font-source-serif-4)" }}
     >
-      <div key={currentFile ?? "readme"} className="max-w-2xl mx-auto content-enter">
-        <ContentWithPlaceholders content={content} />
+      <div key={file} className="max-w-2xl mx-auto content-enter">
+        <ContentWithPlaceholders content={markdown} />
       </div>
     </div>
   );
