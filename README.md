@@ -1,6 +1,5 @@
 # Hello, I'm Razvan Aga
 
-**Fullstack engineer based in Timisoara, Romania**   
-I build and ship real products end-to-end.
+**Embedded Software Engineer based in Timisoara, Romania**   
 
 **[razvanaga.com](https://razvanaga.com)**  my portfolio, styled as an interactive terminal.
